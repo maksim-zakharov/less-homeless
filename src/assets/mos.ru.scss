@@ -288,6 +288,18 @@ nz-breadcrumb-item {
 .ant-descriptions-item-colon::after {
   content: '';
 }
+
+.ant-switch-checked, .ant-tabs-ink-bar {
+  background-color: #cc2222;
+}
+
+.ant-tabs-nav .ant-tabs-tab-active {
+  color: #0c1014 !important;
+  text-decoration: none !important;
+  font-weight: 800;
+  font-family: Lato, Arial, sans-serif;
+}
+
 //
 //a, a:active, a:hover, .ant-upload.ant-upload-drag p.ant-upload-drag-icon .anticon {
 //  color: #cd2525;

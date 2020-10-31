@@ -12,7 +12,7 @@ async function bootstrap() {
   app.use(compression()); // Сжатие
   // app.use(helmet()); // Безопасность
 
-  await app.listen(process.env.PORT || 4201);
+  await app.listen(process.env.PORT);
 }
 
 bootstrap();

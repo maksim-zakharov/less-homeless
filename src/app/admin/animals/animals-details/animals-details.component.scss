@@ -6,10 +6,15 @@
 
 :host {
   display: grid;
+  grid-template-columns: auto max-content;
 }
 
 .info {
   grid-column: 1;
+}
+
+nz-tabset {
+  grid-row: 2;
 }
 
 nz-upload {
@@ -22,7 +27,7 @@ nz-upload {
   margin-left: 30px;
   width: 300px;
   //height: 700px;
-  overflow: auto;
+  overflow: auto;    grid-row: 2;
 }
 
 .doc {

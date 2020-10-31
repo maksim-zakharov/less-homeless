@@ -10,19 +10,23 @@ import {
   NzDividerModule,
   NzFormModule, NzIconModule,
   NzInputModule, NzMessageModule, NzModalModule, NzRadioModule, NzSelectModule,
-  NzTableModule, NzToolTipModule, NzUploadModule
+  NzTableModule, NzTabsModule, NzToolTipModule, NzUploadModule
 } from 'ng-zorro-antd';
 import { AnimalsDetailsComponent } from './animals-details/animals-details.component';
 import { AnimalsEditComponent } from './animals-edit/animals-edit.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AnimalsAviariesComponent } from './animals-aviaries/animals-aviaries.component';
+import { AnimalSterilizationComponent } from './animal-sterilization/animal-sterilization.component';
+import { AnimalParasiteTreatmentComponent } from './animal-parasite-treatment/animal-parasite-treatment.component';
 
 @NgModule({
   declarations: [
     AnimalsListComponent,
     AnimalsDetailsComponent,
     AnimalsAviariesComponent,
-    AnimalsEditComponent
+    AnimalsEditComponent,
+    AnimalSterilizationComponent,
+    AnimalParasiteTreatmentComponent
   ],
   providers: [AnimalsService],
   imports: [
@@ -43,7 +47,7 @@ import { AnimalsAviariesComponent } from './animals-aviaries/animals-aviaries.co
     NzIconModule,
     NzDatePickerModule,
     NzCardModule,
-    NzUploadModule, NzRadioModule
+    NzUploadModule, NzRadioModule, NzTabsModule, FormsModule
   ]
 })
 export class AnimalsModule {

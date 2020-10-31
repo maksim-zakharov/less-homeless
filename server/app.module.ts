@@ -5,9 +5,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AnimalsModule } from './src/animals/animals.module';
 import { CoreModule } from './src/core/core.module';
 import { AuthModule } from './src/auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(), // load .env file
     CoreModule,
     AngularUniversalModule.forRoot({
       viewsPath: join(process.cwd(), 'dist/browser'),

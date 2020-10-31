@@ -1,8 +1,20 @@
 /* tslint:disable:variable-name no-non-null-assertion */
 import { Component, OnInit } from '@angular/core';
 import { AnimalsService } from '../animals.service';
-import { Observable, Observer, of } from 'rxjs';
-import { filter, flatMap, map, pluck, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
+import { combineLatest, Observable, Observer, of, Subject, zip } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  flatMap,
+  map,
+  pluck,
+  shareReplay,
+  startWith,
+  switchMap,
+  tap,
+  withLatestFrom
+} from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzMessageService, NzUploadFile } from 'ng-zorro-antd';
@@ -83,7 +95,7 @@ export class AnimalsEditComponent implements OnInit {
       switchMap(title => title.startsWith('Создание')
         ? this.ordersService.saveAnimalDetails(this.validateForm.value)
         : this.ordersService.updateAnimalDetails(this.validateForm.value.id, this.validateForm.value)),
-      switchMap(createdAnimal => this.ordersService.savePhoto(createdAnimal.id, this.fileList[0], this.fileList[0].name),
+      switchMap(createdAnimal => this.fileList.length ? this.ordersService.savePhoto(createdAnimal.id, this.fileList[0], this.fileList[0].name) : of(createdAnimal),
         (createdAnimal, _) => {
           return createdAnimal;
         }),
@@ -94,32 +106,54 @@ export class AnimalsEditComponent implements OnInit {
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       id: [null, []],
-      category: ['Кошка', [Validators.required]],
-      catchingAct: [null, [Validators.required]],
-      district: [null, [Validators.required]],
-      street: [null, [Validators.required]],
-      breed: [null, [Validators.required]],
-      sex: ['0', [Validators.required]],
-      color: [null, [Validators.required]],
-      birthDate: [new Date(), [Validators.required]],
-      wool: [null, [Validators.required]],
-      ears: [null, [Validators.required]],
-      tail: [null, [Validators.required]],
-      size: ['Маленький', [Validators.required]],
-      weight: [null, [Validators.required]],
-      specialSigns: [null, [Validators.required]],
+      name: [null, []],
+      category: [null, []],
+      district: [null, []],
+      street: [null, []],
+      breed: [null, []],
+      sex: [null, []],
+      color: [null, []],
+      birthDate: [null, []],
+      wool: [null, []],
+      ears: [null, []],
+      aviary: [null, []],
+      tail: [null, []],
+      size: [null, []],
+      weight: [null, []],
+      specialSigns: [null, []],
       identificationLabel: [null, [Validators.required]],
-      shelter: [null, [Validators.required]],
-      shelterArrivalDate: [new Date(), [Validators.required]],
-      name: [null, [Validators.required]],
-      sterilizationStationName: [null, [Validators.required]],
-      sterilizationStationAddress: [null, [Validators.required]],
-      sterilizationStationArrivalDate: [new Date(), [Validators.required]],
-      sterilizationDate: [new Date(), [Validators.required]],
-      doctorFullname: [null, [Validators.required]],
-      dischargeDate: [new Date(), [Validators.required]],
-      headOfSterilizationFullname: [null, [Validators.required]],
+      shelter: [null, []],
+      doctorName: [null, []],
+      dischargeDate: [null, []],
+      euthanasiaReason: [null, []],
+      leavingReason: [null, []],
+      causeDeath: [null, []],
+      imgSrc: [null, []],
+      vaccination: [null, []],
+      parasiteTreatment: [null, []],
+      captureInfo: [null, []],
+      sterilization: [null, []],
     });
+
+    const subj = new Subject();
+
+    subj.pipe(
+      debounceTime(2000),
+      tap(() => this.submitForm())
+    ).subscribe();
+
+    this.validateForm.controls.parasiteTreatment.valueChanges.pipe(
+      tap(() => subj.next({}))
+    ).subscribe();
+    this.validateForm.controls.captureInfo.valueChanges.pipe(
+      tap(() => subj.next({}))
+    ).subscribe();
+    this.validateForm.controls.vaccination.valueChanges.pipe(
+      tap(() => subj.next({}))
+    ).subscribe();
+    this.validateForm.controls.sterilization.valueChanges.pipe(
+      tap(() => subj.next({}))
+    ).subscribe();
   }
 
   beforeUpload = (file: File, _fileList: NzUploadFile[]) => {
@@ -129,7 +163,7 @@ export class AnimalsEditComponent implements OnInit {
       this.avatarUrl = img;
     });
     return false;
-  }
+  };
 
   private getBase64(img: File, callback: (img: string) => void): void {
     const reader = new FileReader();

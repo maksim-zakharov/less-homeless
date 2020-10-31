@@ -10,11 +10,11 @@ export class YandexS3Service {
 // Инициализация
     this.s3 = new EasyYandexS3({
       auth: {
-        accessKeyId: process.env.YANDEX_S3_ACCESSKEY || '5ZGRpDzTNn5bVkscQveb',
-        secretAccessKey: process.env.YANDEX_S3_SECRETKEY || 'wQWzkfUTSlcS6RFGgpEWhLuSoEnJOwXU-RdC-2cj',
+        accessKeyId: process.env.YANDEX_S3_ACCESSKEY,
+        secretAccessKey: process.env.YANDEX_S3_SECRETKEY,
       },
-      Bucket: process.env.YANDEX_S3_BUCKET || 'less-homeless',
-      debug: process.env.YANDEX_S3_DEBUG || true
+      Bucket: process.env.YANDEX_S3_BUCKET,
+      debug: process.env.YANDEX_S3_DEBUG
     });
   }
 

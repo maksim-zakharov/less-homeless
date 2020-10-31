@@ -1,56 +1,71 @@
+import { PetType } from './models/pet-type.entity';
+import { CatBreed } from './models/cat-breed.entity';
+import { PetGender } from './models/pet-gender.entity';
+import { CatColor } from './models/cat-color.entity';
+import { CatFur } from './models/cat-fur.entity';
+import { EarType } from './models/ear-type.entity';
+import { TailType } from './models/tail-type.entity';
+import { PetSize } from './models/pet-size.entity';
+import { Shelter } from './models/shelter.entity';
+import { ReasonForEuthanasia } from './models/reason-for-euthanasia.entity';
+import { ReasonForLeaving } from './models/reason-for-leaving.entity';
+import { DeathCause } from './models/death-cause.entity';
+import { Vaccination } from './models/vaccination.entity';
+import { ParasiteTreatment } from './models/parasite-treatment.entity';
+import { CaptureInfo } from './models/capture-info.entity';
+import { Sterilization } from './models/sterilization.entity';
+
 export class AnimalModel {
 
+  id: number;
+  createDate: string;
   name: string;
 
-  category: { id: number, name: string };
+  category: PetType;
 
-  catchingAct: string;
 
   district: string;
 
   street: string;
 
-  breed: { id: number, name: string };
-
-  sex: { id: number, name: string };
-
-  color: { id: number, name: string };
+  breed: CatBreed;
+  sex: PetGender;
+  color: CatColor;
 
   birthDate: string;
+  wool: CatFur;
+  ears: EarType;
 
-  wool: { id: number, name: string };
 
-  ears: { id: number, name: string };
+  aviary: string;
 
-  tail: { id: number, name: string };
-
-  size: { id: number, name: string };
+  tail: TailType;
+  size: PetSize;
 
   weight: string;
-
-  imgSrc: string;
 
   specialSigns: string;
 
   identificationLabel: string;
+  shelter: Shelter;
 
-  shelter: { id: number, name: string, address: string };
-
-  shelterArrivalDate: string;
-
-  sterilizationStationName: string;
-
-  sterilizationStationAddress: string;
-
-  sterilizationStationArrivalDate: string;
-
-  sterilizationDate: string;
-
-  doctorFullname: string;
+  doctorName: string;
 
   dischargeDate: string;
 
-  headOfSterilizationFullname: string;
-  createDate: string;
-  id: number;
+  euthanasiaReason: ReasonForEuthanasia;
+
+  leavingReason: ReasonForLeaving;
+
+  causeDeath: DeathCause;
+
+  imgSrc: string;
+
+  vaccination: Vaccination;
+
+  parasiteTreatment: ParasiteTreatment;
+
+  captureInfo: CaptureInfo;
+
+  sterilization: Sterilization;
 }
