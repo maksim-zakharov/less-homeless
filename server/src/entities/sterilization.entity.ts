@@ -1,4 +1,4 @@
-import { Column, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Animal } from '../animals/animal';
 import { Entity } from 'typeorm';
 
@@ -19,6 +19,6 @@ export class Sterilization {
   @Column()
   veterinarianName: string;
 
-  @ManyToOne(() => Animal, user => user.sterilization)
-  public animal: Animal;
+  @OneToOne(() => Animal, {cascade: true})
+  animal: Animal;
 }

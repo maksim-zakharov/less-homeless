@@ -106,6 +106,7 @@ export class AnimalsEditComponent implements OnInit {
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       id: [null, []],
+      identificationLabel: [null, [Validators.required]],
       name: [null, []],
       category: [null, []],
       district: [null, []],
@@ -121,7 +122,6 @@ export class AnimalsEditComponent implements OnInit {
       size: [null, []],
       weight: [null, []],
       specialSigns: [null, []],
-      identificationLabel: [null, [Validators.required]],
       shelter: [null, []],
       doctorName: [null, []],
       dischargeDate: [null, []],
@@ -134,26 +134,6 @@ export class AnimalsEditComponent implements OnInit {
       captureInfo: [null, []],
       sterilization: [null, []],
     });
-
-    const subj = new Subject();
-
-    subj.pipe(
-      debounceTime(2000),
-      tap(() => this.submitForm())
-    ).subscribe();
-
-    this.validateForm.controls.parasiteTreatment.valueChanges.pipe(
-      tap(() => subj.next({}))
-    ).subscribe();
-    this.validateForm.controls.captureInfo.valueChanges.pipe(
-      tap(() => subj.next({}))
-    ).subscribe();
-    this.validateForm.controls.vaccination.valueChanges.pipe(
-      tap(() => subj.next({}))
-    ).subscribe();
-    this.validateForm.controls.sterilization.valueChanges.pipe(
-      tap(() => subj.next({}))
-    ).subscribe();
   }
 
   beforeUpload = (file: File, _fileList: NzUploadFile[]) => {

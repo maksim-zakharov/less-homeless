@@ -1,5 +1,5 @@
 <h3>Сведения об обработке от экто- и эндопаразитов</h3>
-<form [formGroup]="form" (ngSubmit)="submit()" *ngIf="!readonly">
+<form [formGroup]="form" (ngSubmit)="submit()">
   <div nz-row [nzGutter]="24" nzType="flex" nzJustify="start">
     <nz-form-item>
       <nz-form-label nzRequired nzFor="date">Дата обработки</nz-form-label>
@@ -38,13 +38,3 @@
     </nz-form-control>
   </nz-form-item>
 </form>
-
-<nz-descriptions nzTitle="Сведения об обработке от экто- и эндопаразитов" nzLayout="vertical" nzSize="small"
-                 *ngIf="readonly">
-  <!--    Заполняется в пункте стерилизации-->
-  <nz-descriptions-item nzTitle="Дата обработки">{{value.date}}</nz-descriptions-item>
-  <nz-descriptions-item nzTitle="Вес животного">{{value.animalWeight}}</nz-descriptions-item>
-  <nz-descriptions-item nzTitle="Название препарата">{{value.medicineName}}</nz-descriptions-item>
-  <nz-descriptions-item nzTitle="Дозировка">{{value.dose}}</nz-descriptions-item>
-  <nz-descriptions-item nzTitle="ФИО ветврача">{{value.veterinarianName}}</nz-descriptions-item>
-</nz-descriptions>

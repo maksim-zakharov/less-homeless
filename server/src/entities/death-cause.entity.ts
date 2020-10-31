@@ -1,6 +1,7 @@
-import { Column, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Entity } from 'typeorm';
 import { Animal } from '../animals/animal';
+import { Vaccination } from './vaccination.entity';
 
 @Entity()
 export class DeathCause {
@@ -10,6 +11,6 @@ export class DeathCause {
   @Column()
   public name: string;
 
-  @OneToMany(() => Animal, user => user.causeDeath)
-  public animal: Animal;
+  @OneToMany(() => Animal, v => v.causeDeath, {cascade: true})
+  animal: Animal[];
 }

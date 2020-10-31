@@ -138,7 +138,7 @@ export class AnimalsController {
   @Get(':id/docs')
   getDocs(@Param('id') id: number): Promise<{ name: string, url: string, createDate: string }[]> {
     return this.s3.get<{ Prefix: string, Contents: any[] }>(`/docs/${id}/`).then(docs =>
-      Array.from<{ Key: string, LastModified: string }>(docs.Contents).map(d => ({
+      Array.from<{ Key: string, LastModified: string }>(docs.Contents || []).map(d => ({
         name: d.Key.replace(docs.Prefix, ''),
         createDate: d.LastModified,
         url: `https://less-homeless.storage.yandexcloud.net/${d.Key}`

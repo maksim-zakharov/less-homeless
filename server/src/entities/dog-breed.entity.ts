@@ -8,7 +8,4 @@ export class DogBreed {
 
   @Column()
   public name: string;
-
-  @OneToMany(() => Animal, user => user.breed)
-  public animal: Animal;
 }

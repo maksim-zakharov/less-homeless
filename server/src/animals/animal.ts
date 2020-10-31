@@ -18,78 +18,87 @@ import { CaptureInfo } from '../entities/capture-info.entity';
 import { Sterilization } from '../entities/sterilization.entity';
 
 export class NewAnimal {
-  @Column('text', {nullable: true})
+  @Column({nullable: true})
   name: string;
 
-  @ManyToOne(() => PetType, photo => photo.animal, {nullable: true})
+  @ManyToOne(() => PetType)
+
   category?: PetType;
 
-  @Column('text', {nullable: true})
+  @Column({nullable: true})
   district: string;
-  @Column('text', {nullable: true})
+  @Column({nullable: true})
   street: string;
 
-  @ManyToOne(() => CatBreed, photo => photo.animal, {nullable: true})
+  @ManyToOne(() => CatBreed)
+
   breed?: CatBreed;
-  @ManyToOne(() => PetGender, photo => photo.animal, {nullable: true})
+  @ManyToOne(() => PetGender)
+
   sex?: PetGender;
-  @ManyToOne(() => CatColor, photo => photo.animal, {nullable: true})
+  @ManyToOne(() => CatColor)
+
   color?: CatColor;
-  @Column('text', {nullable: true})
+  @Column({nullable: true})
   birthDate: string;
-  @ManyToOne(() => CatFur, photo => photo.animal, {nullable: true})
+  @ManyToOne(() => CatFur)
+
   wool?: CatFur;
-  @ManyToOne(() => EarType, photo => photo.animal, {nullable: true})
+  @ManyToOne(() => EarType)
+
   ears?: EarType;
 
-  @Column('text', {nullable: true})
+  @Column({nullable: true})
   aviary: string;
 
-  @ManyToOne(() => TailType, photo => photo.animal, {nullable: true})
+  @ManyToOne(() => TailType)
+
   tail?: TailType;
-  @ManyToOne(() => PetSize, photo => photo.animal, {nullable: true})
+  @ManyToOne(() => PetSize)
+
   size?: PetSize;
-  @Column('text', {nullable: true})
+  @Column({nullable: true})
   weight: string;
-  @Column('text', {nullable: true})
+  @Column({nullable: true})
   specialSigns: string;
-  @Column('text', {nullable: true})
+  @Column({nullable: true, unique: true})
   identificationLabel: string;
-  @ManyToOne(() => Shelter, photo => photo.animal, {nullable: true})
+  @ManyToOne(() => Shelter)
+
   shelter?: Shelter;
-  @Column('text', {nullable: true})
+  @Column({nullable: true})
   doctorName: string;
-  @Column('text', {nullable: true})
+  @Column({nullable: true})
   dischargeDate: string;
 
-  @ManyToOne(() => ReasonForEuthanasia, photo => photo.animal, {nullable: true})
+  @ManyToOne(() => ReasonForEuthanasia)
+
   euthanasiaReason?: ReasonForEuthanasia;
 
-  @ManyToOne(() => ReasonForLeaving, photo => photo.animal, {nullable: true})
+  @ManyToOne(() => ReasonForLeaving)
+
   leavingReason?: ReasonForLeaving;
 
-  @ManyToOne(() => DeathCause, photo => photo.animal, {nullable: true})
+  @ManyToOne(() => DeathCause)
+
   causeDeath?: DeathCause;
 
-  @Column('text', {nullable: true})
+  @Column({nullable: true})
   imgSrc: string;
 
-  @OneToMany(() => Vaccination, photo => photo.animal, {nullable: true})
-  vaccination?: Vaccination;
+  @OneToMany(() => Vaccination, v => v.animal)
+  vaccination: Vaccination[];
 
-  @Column( {nullable: true})
-  parasiteTreatmentId: number;
-
-  @OneToMany(() => ParasiteTreatment, photo => photo.animal, {nullable: true})
+  @OneToOne(() => ParasiteTreatment, {nullable: true, cascade: true})
+  @JoinColumn({name: 'parasiteTreatmentId'})
   parasiteTreatment?: ParasiteTreatment;
 
-  @OneToOne(() => CaptureInfo, photo => photo.animal, {nullable: true})
+  @OneToOne(() => CaptureInfo, {nullable: true, cascade: true})
+  @JoinColumn({name: 'captureInfoId'})
   captureInfo?: CaptureInfo;
 
-  @Column( {nullable: true})
-  sterilizationId: number;
-
-  @OneToOne(() => Sterilization, photo => photo.animal, {nullable: true})
+  @OneToOne(() => Sterilization, {nullable: true, cascade: true})
+  @JoinColumn({name: 'sterilizationId'})
   sterilization?: Sterilization;
 }
 

@@ -9,6 +9,6 @@ export class PetType {
   @Column()
   public name: string;
 
-  @OneToMany(() => Animal, user => user.category)
-  public animal: Animal;
+  @OneToMany(() => Animal, v => v.category, {cascade: true})
+  animal: Animal[];
 }

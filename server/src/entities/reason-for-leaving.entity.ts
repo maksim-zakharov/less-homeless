@@ -9,6 +9,6 @@ export class ReasonForLeaving {
   @Column()
   public name: string;
 
-  @OneToMany(() => Animal, user => user.leavingReason)
-  public animal: Animal;
+  @OneToMany(() => Animal, v => v.leavingReason, {cascade: true})
+  animal: Animal[];
 }

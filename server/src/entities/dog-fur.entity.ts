@@ -10,6 +10,4 @@ export class DogFur {
   @Column()
   public name: string;
 
-  @OneToMany(() => Animal, user => user.wool)
-  public animal: Animal;
 }

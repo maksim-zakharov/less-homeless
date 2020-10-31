@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { ParasiteTreatment } from '../models/parasite-treatment.entity';
 
@@ -19,7 +19,7 @@ export class AnimalParasiteTreatmentComponent implements OnInit, ControlValueAcc
   form: FormGroup;
   value: ParasiteTreatment;
 
-  @Input() readonly: boolean;
+  @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private fb: FormBuilder) {
   }
@@ -51,6 +51,8 @@ export class AnimalParasiteTreatmentComponent implements OnInit, ControlValueAcc
   writeValue(obj: any): void {
     this.form.patchValue(obj || {});
     this.value = obj || [];
+
+    this.onChange(this.form.value);
   }
 
   submit(): void {
@@ -61,5 +63,6 @@ export class AnimalParasiteTreatmentComponent implements OnInit, ControlValueAcc
     }
 
     this.onChange(this.form.value);
+    this.onSubmit.next();
   }
 }

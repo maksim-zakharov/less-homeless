@@ -9,7 +9,4 @@ export class DogColor {
 
   @Column()
   public name: string;
-
-  @OneToMany(() => Animal, user => user.color)
-  public animal: Animal;
 }

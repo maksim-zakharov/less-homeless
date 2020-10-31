@@ -1,4 +1,4 @@
-import { Column, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Animal } from '../animals/animal';
 import { Entity } from 'typeorm';
 
@@ -22,6 +22,7 @@ export class ParasiteTreatment {
   @Column()
   veterinarianName: string;
 
-  @ManyToOne(() => Animal, user => user.parasiteTreatment)
-  public animal: Animal;
+  @OneToOne(() => Animal, {cascade: true})
+
+  animal: Animal;
 }

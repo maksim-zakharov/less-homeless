@@ -1,4 +1,4 @@
-import { Column, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Animal } from '../animals/animal';
 import { Entity } from 'typeorm';
 
@@ -22,6 +22,6 @@ export class CaptureInfo {
   @Column()
   public orderDocUrl: string;
 
-  @OneToOne(() => Animal, user => user.captureInfo)
-  public animal: Animal;
+  @OneToOne(() => Animal, {cascade: true})
+  animal: Animal;
 }

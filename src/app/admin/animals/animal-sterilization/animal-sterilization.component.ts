@@ -1,4 +1,4 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
+import { Component, EventEmitter, forwardRef, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 
 @Component({
@@ -17,7 +17,7 @@ export class AnimalSterilizationComponent implements OnInit, ControlValueAccesso
 
   form: FormGroup;
 
-  _value;
+  @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private fb: FormBuilder) {
   }
@@ -47,6 +47,8 @@ export class AnimalSterilizationComponent implements OnInit, ControlValueAccesso
 
   writeValue(obj: any): void {
     this.form.patchValue(obj || {});
+
+    this.onChange(this.form.value);
   }
 
   submit(): void {
@@ -57,5 +59,6 @@ export class AnimalSterilizationComponent implements OnInit, ControlValueAccesso
     }
 
     this.onChange(this.form.value);
+    this.onSubmit.next();
   }
 }

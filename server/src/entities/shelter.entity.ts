@@ -1,4 +1,4 @@
-import { Column, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { OperOrg } from './oper-org.entity';
 import { Animal } from '../animals/animal';
 import { Entity } from 'typeorm';
@@ -16,8 +16,9 @@ export class Shelter {
   public phone: string;
 
   @ManyToOne(() => OperOrg, user => user.shelters)
+
   public subjection: OperOrg;
 
-  @OneToMany(() => Animal, user => user.shelter)
-  public animal: Animal;
+  @OneToMany(() => Animal, v => v.shelter, {cascade: true})
+  animal: Animal[];
 }

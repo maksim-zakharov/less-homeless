@@ -10,6 +10,6 @@ export class EarType {
   @Column()
   public name: string;
 
-  @OneToMany(() => Animal, user => user.ears)
-  public animal: Animal;
+  @OneToMany(() => Animal, v => v.ears, {cascade: true})
+  animal: Animal[];
 }

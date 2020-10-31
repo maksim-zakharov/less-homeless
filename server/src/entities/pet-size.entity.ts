@@ -9,6 +9,6 @@ export class PetSize {
   @Column()
   public name: string;
 
-  @OneToMany(() => Animal, user => user.size)
-  public animal: Animal;
+  @OneToMany(() => Animal, v => v.size, {cascade: true})
+  animal: Animal[];
 }

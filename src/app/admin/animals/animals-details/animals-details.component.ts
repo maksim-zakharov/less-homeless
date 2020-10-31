@@ -36,7 +36,6 @@ export class AnimalsDetailsComponent implements OnInit {
   handleChange({file, fileList}: NzUploadChangeParam): void {
     const status = file.status;
     if (status !== 'uploading') {
-      console.log(file, fileList);
       const newDoc = {
         url: `https://less-homeless.storage.yandexcloud.net/${file.response.Key}`,
         createDate: file.lastModifiedDate,

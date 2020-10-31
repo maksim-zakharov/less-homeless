@@ -9,6 +9,6 @@ export class TailType {
   @Column()
   public name: string;
 
-  @OneToMany(() => Animal, user => user.tail)
-  public animal: Animal;
+  @OneToMany(() => Animal, v => v.tail, {cascade: true})
+  animal: Animal[];
 }

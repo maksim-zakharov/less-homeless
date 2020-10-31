@@ -9,6 +9,6 @@ export class CatColor {
   @Column()
   public name: string;
 
-  @OneToMany(() => Animal, user => user.color)
-  public animal: Animal;
+  @OneToMany(() => Animal, v => v.color, {cascade: true})
+  animal: Animal[];
 }

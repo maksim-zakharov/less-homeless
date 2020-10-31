@@ -10,6 +10,6 @@ export class ReasonForEuthanasia {
   @Column()
   public name: string;
 
-  @OneToMany(() => Animal, user => user.euthanasiaReason)
-  public animal: Animal;
+  @OneToMany(() => Animal, v => v.euthanasiaReason, {cascade: true})
+  animal: Animal[];
 }
