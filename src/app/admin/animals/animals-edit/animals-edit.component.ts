@@ -109,7 +109,7 @@ export class AnimalsEditComponent implements OnInit {
       weight: [null, [Validators.required]],
       specialSigns: [null, [Validators.required]],
       identificationLabel: [null, [Validators.required]],
-      shelterName: [null, [Validators.required]],
+      shelter: [null, [Validators.required]],
       shelterArrivalDate: [new Date(), [Validators.required]],
       name: [null, [Validators.required]],
       sterilizationStationName: [null, [Validators.required]],

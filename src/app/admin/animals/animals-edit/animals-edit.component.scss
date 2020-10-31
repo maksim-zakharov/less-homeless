@@ -10,6 +10,10 @@ img {
   object-fit: cover;
 }
 
+nz-card::ng-deep .ant-card-body {
+  display: flex;
+}
+
 nz-upload::ng-deep .ant-upload.ant-upload-select-picture-card {
   width: 358px;
   height: 358px;

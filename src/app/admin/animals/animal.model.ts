@@ -34,9 +34,7 @@ export class AnimalModel {
 
   identificationLabel: string;
 
-  shelterName: string;
-
-  shelterAddress: string;
+  shelter: { id: number, name: string, address: string };
 
   shelterArrivalDate: string;
 

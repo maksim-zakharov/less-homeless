@@ -18628,7 +18628,7 @@ table.tc-va-b-1 tbody td:first-child, table.tc-va-b-2 tbody td:nth-child(2), tab
 
 html {
   height: 100%;
-  background: #fff
+  /*background: #fff*/
 }
 
 body {

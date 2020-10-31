@@ -9,7 +9,7 @@ export class Shelter {
   public id: number;
 
   @Column()
-  shelterName: string;
+  name: string;
   @Column()
   public address: string;
   @Column()

@@ -24,18 +24,18 @@
     <img [src]="animal.imgSrc" class="avatar">
     <nz-descriptions nzTitle="Стерилизация" nzLayout="vertical" nzSize="small">
       <!--    Заполняется в пункте стерилизации-->
-      <nz-descriptions-item nzTitle="Вд животного">{{animal.category.name}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Вд животного">{{animal.category?.name}}</nz-descriptions-item>
       <nz-descriptions-item nzTitle="Акт отлова">{{animal.catchingAct}}</nz-descriptions-item>
       <nz-descriptions-item nzTitle="Район">{{animal.district}}</nz-descriptions-item>
       <nz-descriptions-item nzTitle="Улица">{{animal.street}}</nz-descriptions-item>
-      <nz-descriptions-item nzTitle="Порода">{{animal.breed.name}}</nz-descriptions-item>
-      <nz-descriptions-item nzTitle="Пол">{{animal.sex.name}}</nz-descriptions-item>
-      <nz-descriptions-item nzTitle="Окрас">{{animal.color.name}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Порода">{{animal.breed?.name}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Пол">{{animal.sex?.name}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Окрас">{{animal.color?.name}}</nz-descriptions-item>
       <nz-descriptions-item nzTitle="Дата рождения">{{animal.birthDate | date: 'dd.MM.yyyy'}}</nz-descriptions-item>
-      <nz-descriptions-item nzTitle="Шерсть">{{animal.wool.name}}</nz-descriptions-item>
-      <nz-descriptions-item nzTitle="Уши">{{animal.ears.name}}</nz-descriptions-item>
-      <nz-descriptions-item nzTitle="Хвост">{{animal.tail.name}}</nz-descriptions-item>
-      <nz-descriptions-item nzTitle="Размер">{{animal.size.name}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Шерсть">{{animal.wool?.name}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Уши">{{animal.ears?.name}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Хвост">{{animal.tail?.name}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Размер">{{animal.size?.name}}</nz-descriptions-item>
       <nz-descriptions-item nzTitle="Вес">{{animal.weight}}</nz-descriptions-item>
       <nz-descriptions-item nzTitle="Особые приметы">{{animal.specialSigns}}</nz-descriptions-item>
       <nz-descriptions-item nzTitle="Наименование пункта стерилизации">{{animal.sterilizationStationName}}</nz-descriptions-item>
@@ -50,8 +50,8 @@
     <!--  <nz-divider></nz-divider>-->
     <nz-descriptions nzTitle="Приют" nzLayout="vertical" nzSize="small">
       <!--    Заполняется в приюте-->
-      <nz-descriptions-item nzTitle="Наименование приюта">{{animal.shelterName}}</nz-descriptions-item>
-      <nz-descriptions-item nzTitle="Адрес приюта">{{animal.shelterAddress}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Наименование приюта">{{animal.shelter?.name}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Адрес приюта">{{animal.shelter?.address}}</nz-descriptions-item>
       <nz-descriptions-item nzTitle="Дата поступления животного в приют">{{animal.shelterArrivalDate | date: 'dd.MM.yyyy'}}</nz-descriptions-item>
       <nz-descriptions-item nzTitle="Кличка животного">{{animal.name}}</nz-descriptions-item>
 <!--      <nz-descriptions-item nzTitle="Дата выбытия животного из приюта">{{animal.category}}</nz-descriptions-item>-->

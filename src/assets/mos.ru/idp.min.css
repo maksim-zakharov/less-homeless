@@ -229,16 +229,16 @@ h4.sub-title {
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
-  height: 130px;
-  text-align: center;
-  width: 100%;
-  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);
-  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);
-  -ms-box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);
-  -o-box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.35)
+  /*position: absolute;*/
+  /*bottom: 0;*/
+  /*height: 130px;*/
+  /*text-align: center;*/
+  /*width: 100%;*/
+  /*-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);*/
+  /*-moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);*/
+  /*-ms-box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);*/
+  /*-o-box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);*/
+  /*box-shadow: 0 0 3px rgba(0, 0, 0, 0.35)*/
 }
 
 footer .author-logo {
