@@ -1,0 +1,211 @@
+@value variables: "./variables.module.css";
+@value color-bg-base, color-mos, color-primary, color-primary-active, font-size-base, font-weight-semibold, font-weight-light, font-weight-bold, height-caption, height-caption-desktop, font-weight-base, font-primary, gutter, line-height-base, padding-sm-md, padding-lg from variables;
+
+.caption {
+  background-color: color-mos;
+  height: height-caption;
+  line-height: height-caption;
+  color: color-bg-base;
+  font-size: font-size-base;
+  z-index: 2;
+  display: flex;
+}
+
+.captionDesktop {
+  composes: caption;
+  composes: divider from './common.module.css';
+}
+
+.captionWithMenu {
+  composes: caption;
+}
+
+.captionWithMenu:after {
+  width: 9px;
+  height: 9px;
+  content: '';
+  background-color: #ffffff;
+  position: absolute;
+  left: 19px;
+  top: 43px;
+  z-index: 1;
+  transform: rotate(45deg);
+}
+
+.logo {
+  display: inline;
+  vertical-align: middle;
+  margin-right: 0;
+  font-size: 20px;
+  line-height: 1;
+  color: color-bg-base;
+  font-weight: font-weight-bold;
+}
+
+@media (min-width: 1024px) {
+  .logo {
+    margin-right: 8px;
+    vertical-align: baseline;
+  }
+}
+
+@media (min-width: 768px) {
+  .captionWithMenu:after {
+    left: 26.495px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .captionWithMenu:after {
+    display: none;
+  }
+}
+
+.caption {
+  font-family: font-primary;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: font-weight-semibold;
+  flex: 1;
+  cursor: default;
+  text-align: center;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .name {
+    padding-bottom: 2px;
+  }
+}
+
+.name a {
+  font-size: font-size-base;
+}
+
+.name a:hover {
+  color: color-bg-base;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+
+@media (min-width: 768px) {
+  .user {
+    margin-right: 0;
+  }
+}
+
+.item {
+  composes: item semibold from './common.module.css';
+  cursor: pointer;
+  line-height: 14px;
+  margin-left: gutter;
+}
+
+.messages {
+  composes: item;
+  composes: primary from './link.module.css';
+  font-size: font-size-base;
+}
+
+.item:first-child {
+  margin-left: 0;
+}
+
+.item:hover {
+  color: color-primary-active;
+}
+
+.navIcon {
+  display: flex;
+  align-items: center;
+  margin-top: 0;
+  margin-left: 16px;
+}
+
+@media (min-width: 768px) {
+  .navIcon {
+    margin-left: 22px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :global(.device-desktop) .caption {
+    border-bottom: 0 none transparent;
+    height: height-caption-desktop;
+    line-height: height-caption-desktop;
+  }
+
+  :global(.device-desktop) .name {
+    display: block;
+    text-align: left;
+  }
+
+  :global(.device-desktop) .logo {
+    font-size: 16px;
+    color: color-mos;
+  }
+
+  :global(.device-desktop) .caption {
+    background-color: color-bg-base;
+  }
+
+  :global(.device-desktop) .caption,
+  :global(.device-desktop) .caption > a {
+    color: color-primary;
+  }
+
+  :global(.device-desktop) .caption .name,
+  :global(.device-desktop) .caption .name a,
+  :global(.device-desktop) .caption .name:hover {
+    color: color-mos;
+  }
+
+  :global(.theme-cityday) .caption,
+  :global(.theme-cityday) .caption > a,
+  :global(.theme-cityday) .caption .name a {
+    color: #ffffff !important;
+  }
+}
+
+.langs {
+  composes: item;
+  composes: middle from './common.module.css';
+
+  line-height: line-height-base;
+  font-size: font-size-base;
+  margin-top: padding-sm-md;
+}
+
+.mail {
+  composes: langs;
+  composes: primary from './link.module.css';
+  margin-left: padding-lg;
+}
+
+.langs * {
+  color: color-primary;
+}
+
+/* Не печатать в Print версии!*/
+@media print {
+  .navIcon,
+  .mail,
+  .user,
+  .item,
+  .messages {
+    display: none !important;
+  }
+
+  .name {
+    display: block !important;
+    margin-left: 16px !important;
+    text-align: left !important;
+  }
+}

@@ -1,0 +1,70 @@
+<nz-breadcrumb>
+  <nz-breadcrumb-item>
+    Главная
+  </nz-breadcrumb-item>
+  <nz-breadcrumb-item>
+    Список животных по вольерам
+  </nz-breadcrumb-item>
+</nz-breadcrumb>
+<nz-card>
+  <h1>
+    Список животных по вольерам
+    <button nz-button (click)="createModal(tplContent)">Добавить</button>
+  </h1>
+  <nz-table #basicTable [nzData]="orders$ | async">
+    <thead>
+    <tr>
+      <th>№ карточки учета животного</th>
+      <th>Кличка</th>
+      <th>Дата обновления</th>
+      <th>Номер вольера</th>
+      <th>№ чипа животного</th>
+      <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>
+        <a [routerLink]="['/animals', data.animalId]">{{data.animalId}}</a>
+      </td>
+      <td>{{data.name}}</td>
+      <td>{{data.updateDate | date: 'dd.MM.yyyy'}}</td>
+      <td>{{data.aviaryId}}</td>
+      <td>{{data.chipId}}</td>
+      <td>
+        <button nz-button nzType="primary" (click)="editModal(tplContent, data)">Изменить</button>
+      </td>
+    </tr>
+    </tbody>
+  </nz-table>
+
+
+  <ng-template #tplContent>
+    <form nz-form [formGroup]="editAnimalForm" nz-row [nzGutter]="24" nzType="flex" nzJustify="start">
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="aviaryId">Номер вольера</nz-form-label>
+        <nz-form-control nzErrorTip="Введите номер вольера">
+          <input nz-input formControlName="aviaryId" id="aviaryId"/>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="name">Кличка</nz-form-label>
+        <nz-form-control nzErrorTip="Введите кличку">
+          <input nz-input formControlName="name" id="name"/>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="animalId">№ карточки учета животного</nz-form-label>
+        <nz-form-control nzErrorTip="Введите № карточки учета животного">
+          <input nz-input formControlName="animalId" id="animalId"/>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="chipId">№ № чипа животного</nz-form-label>
+        <nz-form-control nzErrorTip="Введите № чипа животного">
+          <input nz-input formControlName="chipId" id="chipId"/>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-template>
+</nz-card>

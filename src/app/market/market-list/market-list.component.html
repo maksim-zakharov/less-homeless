@@ -1,0 +1,14 @@
+  <h1>Питомцы из приютов</h1>
+
+  <h2>Уже дома</h2>
+  <nz-divider></nz-divider>
+  <h2>Наши животные</h2>
+  <nz-divider></nz-divider>
+  <div class="carousel-wrapper">
+    <a class="carousel-item" [routerLink]="[animal.id]" *ngFor="let animal of animals$ | async">
+      <div class="carousel-item__status">Готов к переезду</div>
+      <img [src]="animal.imgSrc" [alt]="animal.name">
+      <div class="shadow"></div>
+      <div class="carousel-item__title">{{animal.name}}</div>
+    </a>
+  </div>

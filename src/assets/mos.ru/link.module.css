@@ -1,0 +1,131 @@
+@value variables: "./variables.module.css";
+@value color-mos, color-primary, color-primary-active from ; /*variables;*/
+@value color-secondary, color-secondary-active, color-user-menuName from ; /*variables;*/
+@value color-footer-primary, color-footer-common from ; /*variables;*/
+@value color-breadcrumbs, color-breadcrumbs-active from ; /*variables;*/
+
+.link,
+button.link,
+.link:link,
+.link:visited,
+.link:hover,
+.link:active,
+.link:focus,
+.link:focus:hover {
+  outline: 0;
+  text-decoration: none;
+}
+
+/*
+* Черные ссылки
+*/
+.primary {
+  composes: link;
+}
+.primary,
+button.primary,
+.primary:link,
+.primary:visited,
+.primary:hover,
+.primary:active {
+  color: color-primary;
+}
+
+.primary:hover,
+.primary:active {
+  color: color-primary-active;
+}
+
+/*
+* Серые ссылки
+*/
+.breadcrumbsLink {
+  composes: link;
+}
+.breadcrumbsLink,
+.breadcrumbsLink:link,
+.breadcrumbsLink:visited,
+.breadcrumbsLink:hover,
+.breadcrumbsLink:active {
+  color: color-breadcrumbs;
+}
+
+.breadcrumbsLink:hover,
+.breadcrumbsLink:active {
+  color: color-breadcrumbs-active;
+}
+
+/*
+* Синие ссылки
+*/
+.secondary {
+  composes: link;
+}
+
+.secondary,
+button.secondary,
+.secondary:link,
+.secondary:visited,
+.secondary:hover,
+.secondary:active {
+  color: color-secondary;
+}
+.secondary:hover,
+.secondary:active {
+  color: color-secondary-active;
+}
+
+.footerSecondary {
+  composes: link;
+}
+
+.footerSecondary,
+button.footerSecondary,
+.footerSecondary:link,
+.footerSecondary:visited {
+  color: color-primary;
+}
+
+.footerSecondary:hover,
+button.footerSecondary:hover,
+.footerSecondary:active,
+button.footerSecondary:active {
+  color: color-footer-common;
+}
+
+/*
+* Белые ссылки основные
+*/
+.footerPrimary {
+  composes: link;
+}
+
+.footerPrimary,
+button.footerPrimary,
+.footerPrimary:visited,
+.footerPrimary:hover,
+.footerPrimary:link,
+.footerPrimary:active,
+.footerPrimary:focus,
+.footerPrimary:focus:hover {
+  color: color-primary;
+}
+
+/*
+* Красные ссылки
+*/
+.red {
+  composes: link;
+}
+
+.red,
+button.red,
+.red:link,
+.red:visited {
+  color: color-mos;
+}
+
+.red:hover,
+.red:active {
+  color: color-mos;
+}

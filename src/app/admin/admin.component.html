@@ -1,0 +1,49 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+            nzCollapsible
+            nzWidth="240px"
+            nzBreakpoint="md"
+            [(nzCollapsed)]="isCollapsed"
+            [nzTrigger]="null">
+    <ul nz-menu nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <!--      <li nz-menu-item nzMatchRouter>-->
+      <!--        <a routerLink="/employees">Сотрудники</a>-->
+      <!--      </li>-->
+      <!--      <li nz-menu-item nzMatchRouter>-->
+      <!--        <a routerLink="/shelters">Приюты</a>-->
+      <!--      </li>-->
+      <!--      <li nz-menu-item nzMatchRouter>-->
+      <!--        <a routerLink="/animals">Учет животных</a>-->
+      <!--      </li>-->
+      <li nz-menu-item nzMatchRouter>
+        <a routerLink="animals/list">Журнал движения животных</a>
+      </li>
+      <!--      <li nz-menu-item nzMatchRouter>-->
+      <!--        <a routerLink="/animals/aviaries">Список животных по вольерам</a>-->
+      <!--      </li>-->
+
+      <!--      <li nz-menu-item nzMatchRouter>-->
+      <!--        <a routerLink="/adoptions">Заявки на усыновление</a>-->
+      <!--      </li>-->
+      <!--      <li nz-menu-item nzMatchRouter>-->
+      <!--        <a routerLink="/catching">Заявки на отлов</a>-->
+      <!--      </li>-->
+      <!--      <li nz-menu-item nzMatchRouter>-->
+      <!--        <a routerLink="/welcome">Заявки на кураторство</a>-->
+      <!--      </li>-->
+      <!--      <li nz-menu-item nzMatchRouter>-->
+      <!--        <a routerLink="/welcome">Заявки на волонтерство</a>-->
+      <!--      </li>-->
+      <li nz-menu-item nzMatchRouter>
+        <a routerLink="permissions">Управление правами доступа</a>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

@@ -1,0 +1,44 @@
+.avatar {
+  max-width: 540px;
+  max-height: 360px;
+  margin-bottom: 30px;
+}
+
+:host {
+  display: grid;
+}
+
+.info {
+  grid-column: 1;
+}
+
+nz-upload {
+  margin-top: 16px;
+  display: block;
+}
+
+.docs {
+  grid-column: 2;
+  margin-left: 30px;
+  width: 300px;
+  height: 700px;
+  overflow: auto;
+}
+
+.doc {
+  margin-top: 12px;
+
+  &:not(:first-of-type) {
+    padding-top: 8px;
+    border-top: 1px solid #d6dade;
+  }
+
+  &__title {
+    margin-bottom: 13px;
+    font-family: "MCW XX";
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333333;
+  }
+}

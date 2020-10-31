@@ -1,0 +1,24 @@
+<nz-breadcrumb>
+  <nz-breadcrumb-item>
+    Главная
+  </nz-breadcrumb-item>
+  <nz-breadcrumb-item>
+    Управление правами доступа
+  </nz-breadcrumb-item>
+</nz-breadcrumb>
+<nz-card>
+  <h1>
+    Управление правами доступа
+  </h1>
+
+  <nz-transfer
+    [nzDataSource]="list"
+    [nzDisabled]="disabled"
+    nzShowSearch
+    [nzFilterOption]="filterOption"
+    (nzSearchChange)="search($event)"
+    (nzSelectChange)="select($event)"
+    (nzChange)="change($event)"
+  >
+  </nz-transfer>
+</nz-card>

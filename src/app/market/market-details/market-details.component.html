@@ -1,0 +1,30 @@
+<nz-breadcrumb>
+  <nz-breadcrumb-item>
+    <a routerLink="../">Журнал животных</a>
+  </nz-breadcrumb-item>
+  <nz-breadcrumb-item>
+    Карточка питомца
+  </nz-breadcrumb-item>
+</nz-breadcrumb>
+<h1>Карточка питомца</h1>
+<nz-divider></nz-divider>
+<div class="info-wrapper" *ngIf="animal$ | async as animal">
+  <img [src]="animal.imgSrc" class="info__image">
+  <div class="info-details">
+    <h2>{{animal.name}}</h2>
+    <div class="info-details__status">Готов к переезду</div>
+    <div class="info-details__label">Порода</div>
+    <div class="info-details__value">{{animal.breed}}</div>
+    <div class="info-details__label">Находится в приюте</div>
+    <div class="info-details__value"></div>
+    <div class="info-details__label">Пол</div>
+    <div class="info-details__value">{{animal.sex}}</div>
+    <div class="info-details__label">Размер</div>
+    <div class="info-details__value"></div>
+    <div class="info-details__label">Цвет</div>
+    <div class="info-details__value">{{animal.color}}</div>
+    <div class="info-details__label">Стерилизован</div>
+    <div class="info-details__value"></div>
+    <h2>Подать заявку</h2>
+  </div>
+</div>

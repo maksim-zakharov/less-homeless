@@ -1,0 +1,93 @@
+<nz-breadcrumb>
+  <nz-breadcrumb-item>
+    Главная
+  </nz-breadcrumb-item>
+  <nz-breadcrumb-item>
+    <a routerLink="../list">Журнал движения животных</a>
+  </nz-breadcrumb-item>
+  <nz-breadcrumb-item>
+    Карточка учета №{{animalId$ | async}}
+  </nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<ng-template #extraTemplate>
+  <a routerLink="../{{animalId$ | async}}/edit">Редактировать</a>
+</ng-template>
+<nz-card class="info" nzTitle="Карточка учета №{{animalId$ | async}}" [nzExtra]="extraTemplate">
+  <ng-container *ngIf="animal$ | async as animal">
+<!--    <nz-descriptions nzTitle="Общее" nzLayout="vertical" nzSize="small">-->
+<!--      <nz-descriptions-item nzTitle="Округ"></nz-descriptions-item>-->
+<!--      <nz-descriptions-item nzTitle="Дата приема"></nz-descriptions-item>-->
+<!--    </nz-descriptions>-->
+    <!--  <nz-divider></nz-divider>-->
+
+    <img [src]="animal.imgSrc" class="avatar">
+    <nz-descriptions nzTitle="Стерилизация" nzLayout="vertical" nzSize="small">
+      <!--    Заполняется в пункте стерилизации-->
+      <nz-descriptions-item nzTitle="Вд животного">{{animal.category.name}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Акт отлова">{{animal.catchingAct}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Район">{{animal.district}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Улица">{{animal.street}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Порода">{{animal.breed.name}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Пол">{{animal.sex.name}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Окрас">{{animal.color.name}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Дата рождения">{{animal.birthDate | date: 'dd.MM.yyyy'}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Шерсть">{{animal.wool.name}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Уши">{{animal.ears.name}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Хвост">{{animal.tail.name}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Размер">{{animal.size.name}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Вес">{{animal.weight}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Особые приметы">{{animal.specialSigns}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Наименование пункта стерилизации">{{animal.sterilizationStationName}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Адрес пункта стерилизации">{{animal.sterilizationStationAddress}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Дата поступления в пункт стерилизации">{{animal.sterilizationStationArrivalDate | date: 'dd.MM.yyyy'}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Идентификационная метка (способ и место нанесения)">{{animal.identificationLabel}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Дата стерилизации">{{animal.sterilizationDate | date: 'dd.MM.yyyy'}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="ФИО врача проводившего стерилизацию">{{animal.doctorFullname}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Дата выписки животного из стерилизации">{{animal.dischargeDate | date: 'dd.MM.yyyy'}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="ФИО руководителя стерилизации">{{animal.headOfSterilizationFullname}}</nz-descriptions-item>
+    </nz-descriptions>
+    <!--  <nz-divider></nz-divider>-->
+    <nz-descriptions nzTitle="Приют" nzLayout="vertical" nzSize="small">
+      <!--    Заполняется в приюте-->
+      <nz-descriptions-item nzTitle="Наименование приюта">{{animal.shelterName}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Адрес приюта">{{animal.shelterAddress}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Дата поступления животного в приют">{{animal.shelterArrivalDate | date: 'dd.MM.yyyy'}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Кличка животного">{{animal.name}}</nz-descriptions-item>
+<!--      <nz-descriptions-item nzTitle="Дата выбытия животного из приюта">{{animal.category}}</nz-descriptions-item>-->
+<!--      <nz-descriptions-item-->
+<!--        nzTitle="Причина выбытия (передача владельцу, смерть или иное, написать)">{{animal.category}}</nz-descriptions-item>-->
+<!--      <nz-descriptions-item-->
+<!--        nzTitle="Основание для выбытия животного из приюта (название, номер и дата документа)">{{animal.category}}</nz-descriptions-item>-->
+<!--      <nz-descriptions-item nzTitle="ФИО и подпись руководителя Управляющей организации приюта">{{animal.category}}</nz-descriptions-item>-->
+    </nz-descriptions>
+    <!--  <nz-divider></nz-divider>-->
+    <!--  <nz-descriptions nzTitle="Учет и регистрация" nzLayout="vertical" nzSize="small">-->
+    <!--    &lt;!&ndash;    Заполняется в городской организации учета и регистрации животных&ndash;&gt;-->
+    <!--    <nz-descriptions-item nzTitle="Государственный регистрационный номер"></nz-descriptions-item>-->
+    <!--    <nz-descriptions-item nzTitle="ФИО и подпись сотрудника"></nz-descriptions-item>-->
+    <!--  </nz-descriptions>-->
+  </ng-container>
+</nz-card>
+<nz-card class="docs">
+  <nz-card-meta nzTitle="Документы" nzDescription="Загрузите документы (акты, договоры, заключения)"></nz-card-meta>
+  <nz-upload
+    nzType="drag"
+    [nzMultiple]="true"
+    nzName="docs"
+    [nzShowUploadList]="false"
+    nzAction="/api/animals/{{animalId$ | async}}/docs"
+    (nzChange)="handleChange($event)"
+  >
+    <p class="ant-upload-drag-icon">
+      <i nz-icon nzType="inbox"></i>
+    </p>
+    <p class="ant-upload-text">Перетащите
+      или выберите файл
+      на компьютере</p>
+  </nz-upload>
+  <div class="doc" *ngFor="let doc of docs$ | async">
+    <a class="doc__title" download="{{doc.name}}" [href]="doc.url">{{doc.name}}</a>
+    <div class="doc__date">{{doc.createDate | date: 'dd.MM.yyyy'}}</div>
+  </div>
+</nz-card>

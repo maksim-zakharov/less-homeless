@@ -1,0 +1,853 @@
+/*                Fonts               */
+@font-face {
+  font-family: 'MCW XX Bold Regular';
+  src: url('../fonts/MCWXXBold.woff2') format('woff2');
+  font-style:   normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'MCW XX ExtraBold Regular';
+  src: url('../fonts/MCWXXBold.woff2') format('woff2');
+  font-style:   normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'MCW XX Light Regular';
+  src: url('../fonts/MCWXXLight.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'MCW XX Medium Regular';
+  src: url('../fonts/MCWXXMedium.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'MCW XX Regular Regular';
+  src: url('../fonts/MCWXXRegular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}
+
+html {
+  background: #f3f5f7;
+}
+
+body {
+  color: #333;
+  font-family: 'MCW XX Light Regular', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  min-height: 100%;
+  min-width: 0;
+}
+
+a {
+  color: #2589de;
+}
+
+a:hover {
+  color: #ea221d;
+  text-decoration: none;
+}
+
+a:focus,
+a:active {
+  color: #c92723;
+  text-decoration: none;
+}
+
+
+/*
+                Content
+*/
+#main {
+  box-shadow: none;
+  margin-left: -264px;
+  width: 528px;
+}
+
+#content_wrapper {
+  padding: 48px 0 160px;
+}
+
+#content {
+  background: #fff;
+  border-radius: 2px;
+  padding: 0 56px 24px;
+}
+
+#content .system-header {
+  padding: 18px 0 38px;
+}
+
+#content .system-header .system-logo {
+  float: left;
+  height: 60px;
+  padding-top: 6px;
+}
+
+#content .system-header .system-logo img {
+  max-height: 60px;
+}
+
+#content .system-header .system-name {
+  color: #000;
+  font-family: 'MCW XX Medium Regular', Helvetica, Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 32px;
+  margin: 0;
+  padding-left: 70px;
+}
+
+#content .form-wrapper .lock-ib.show {
+  display: none !important;
+}
+
+h1.page-title {
+  color: #000;
+  font-family: 'MCW XX Light Regular', Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 28px;
+  margin: 0 0 24px;
+}
+
+h1.page-title .app-name strong {
+  font-weight: 300;
+}
+
+footer.system-footer {
+  box-shadow: none;
+  color: #333;
+  font-size: 12px;
+  height: auto;
+  line-height: 16px;
+  padding-bottom: 24px;
+  text-align: left;
+}
+
+footer.system-footer ul.support {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+footer.system-footer .copy {
+  color: #9ea4ac;
+}
+
+
+/*
+                Components
+*/
+.form-wrapper form .form-input,
+.form-wrapper form .form-group {
+  margin-bottom: 16px;
+}
+
+.form-wrapper form .form-group .col-sm-6 {
+  float: left;
+  width: 50%;
+}
+
+.form-wrapper form .control-label {
+  font-weight: 400;
+  padding-left: 0;
+}
+
+.form-wrapper form .form-control {
+  background-color: transparent;
+  border: 1px solid #d6dade;
+  border-radius: 2px;
+  box-shadow: none;
+  font-family: "MCW XX Regular Regular", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+  height: 56px;
+  line-height: 24px;
+  padding: 0 24px;
+}
+
+.form-wrapper form .form-control:hover,
+.form-wrapper form .form-control:focus {
+  border-color: #2589de;
+  box-shadow: none;
+}
+
+.form-wrapper form .has-error .form-control {
+  border-color: #c92723;
+}
+
+.form-wrapper form .form-control::-moz-placeholder {
+  color: #9ea4ac;
+}
+
+.form-wrapper form .form-control:-ms-input-placeholder {
+  color: #9ea4ac;
+}
+
+.form-wrapper form .form-control::-webkit-input-placeholder {
+  color: #9ea4ac;
+}
+
+.form-wrapper form .append-icon .fa-eye,
+.form-wrapper form .append-icon .fa-eye-slash {
+  color: #333;
+}
+
+.form-wrapper form .checkbox-custom {
+  margin-left: -11px;
+  padding-top: 0;
+}
+
+.form-wrapper form .checkbox-custom label {
+  color: #333;
+  font-weight: 300;
+  padding-left: 26px;
+}
+
+.form-wrapper form .checkbox-custom label:before {
+  top: 2px;
+  background: transparent;
+  border: 1px solid #d6dade;
+  border-radius: 2px;
+  height: 18px;
+  width: 18px;
+}
+
+.checkbox-custom input[type=checkbox]:checked + label:after,
+.checkbox-custom input[type=radio]:checked + label:after {
+  left: 1px;
+  top: 4px;
+  color: #2589de;
+}
+
+.form-wrapper form #notRememberMeDiv label {
+  white-space: nowrap;
+}
+
+.form-wrapper form .help-block {
+  color: #9ea4ac;
+  font-family: "MCW XX Regular Regular", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 4px 0 0;
+}
+
+.form-wrapper form .has-error .help-block {
+  color: #df5640;
+}
+
+.bc-form-btn,
+.form-wrapper form button.btn.btn-lg {
+  background: #2589de;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  font-family: "MCW XX Regular Regular", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  height: 48px;
+  line-height: 48px;
+  margin: 0 auto;
+  padding: 0 32px;
+  width: auto;
+}
+
+.bc-form-btn,
+.form-wrapper form button.btn.btn-lg:nth-child(1) {
+  background-color: #fff;
+  color: #2589de;
+  border: 1px solid #d6dade;
+}
+
+.bc-form-btn:hover,
+.form-wrapper form button.btn.btn-lg:hover
+.bc-form-btn:focus,
+.form-wrapper form button.btn.btn-lg:focus {
+  background: #4ea6f2;
+}
+
+.bc-form-btn:active,
+.form-wrapper form button.btn.btn-lg:active {
+  background: #0f7cd9;
+}
+
+.form-wrapper form .bc-form-btn,
+.form-wrapper form button.btn.btn-lg {
+  margin-top: 32px !important;
+  margin-bottom: 29px !important;
+  width: 100%;
+}
+
+blockquote.blockquote-danger {
+  border-color: #c92723;
+}
+
+.text-danger {
+  color: #c92723;
+}
+
+/* authn */
+.bc-form-passwordMethod label.control-label {
+  display: none;
+}
+
+.bc-form-passwordMethod .append-icon.right {
+  top: 20px;
+}
+
+.bc-form-passwordMethod .bc-recovery-url {
+  margin-right: -11px;
+  padding-top: 0;
+  white-space: nowrap;
+}
+
+.bc-form-passwordMethod .bc-form-btn {
+  width: 100%;
+}
+
+
+/*
+    Methods
+*/
+.methods-wrapper .methods-sep:before {
+  border-color: #d6dade;
+}
+
+.methods-wrapper .methods-sep span {
+  background: #fff;
+  color: #333;
+}
+
+.methods-wrapper .btn-meth {
+  background: #fff !important;
+  border-color: #e2e2e2 !important;
+  border-radius: 2px;
+  color: #2589de;
+  font-size: 16px;
+}
+
+.methods-wrapper .btn-meth:hover,
+.methods-wrapper .btn-meth:focus,
+.methods-wrapper .btn-meth:active {
+  border-color: #2589de !important;
+  color: #2589de;
+}
+
+.methods-wrapper .methods-other .btn-goto {
+  line-height: 44px;
+}
+
+.methods-wrapper .methods-other .btn-goto span.fa {
+  top: -1px;
+}
+
+.methods-ext {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  display: -ms-flexbox;
+  justify-content: center;
+
+}
+
+.meth-esia {
+  order: 1;
+  -ms-flex-order: 1;
+}
+
+.methods-wrapper .btn-meth.has-logo {
+  width: 310px !important;
+}
+
+#showMethodsList {
+  display: inline-block;
+  width: 100%;
+}
+
+.methods-int {
+  text-align: center;
+}
+
+.btn-meth.meth-int {
+  width: 310px !important
+}
+
+.methods-wrapper .meth-ext.meth-facebook .meth-icon {
+  background-size: 28px;
+  background-position: 7px 7px !important;
+}
+
+.methods-wrapper .meth-ext.meth-vk .meth-icon {
+  background-size: 26px;
+}
+
+.methods-wrapper .meth-ext.meth-mail .meth-icon {
+  background-size: 26px;
+  background-position: 8px !important;
+}
+
+/* .btn-meth.meth-sbrf {
+    display: none;
+} */
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .methods-ext {
+    display: -ms-flexbox;
+    -ms-flex-wrap: wrap-reverse;
+    -ms-flex-align: center;
+  }
+
+  .methods-wrapper .btn-meth.has-logo {
+    margin-left: 0px;
+  }
+}
+
+
+/*
+                @media
+*/
+@media screen and (max-width: 624px) {
+  #content_wrapper {
+    padding: 24px 0 160px;
+  }
+
+  #content .system-header .system-logo {
+    height: 44px;
+  }
+
+  #content .system-header .system-logo img {
+    max-height: 44px;
+  }
+
+  #content .system-header .system-name {
+    font-size: 18px;
+    line-height: 24px;
+    padding-left: 48px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #main {
+    left: auto;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  #content_wrapper {
+    padding: 0 0 172px;
+  }
+
+  #content {
+    border-radius: 0;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  #content .system-header .system-name {
+    max-width: 503px;
+  }
+
+  footer.system-footer {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  footer.system-footer ul.support li {
+    margin-bottom: 4px;
+  }
+}
+
+@media screen and (max-width: 462px) {
+  #content_wrapper {
+    padding-bottom: 188px;
+  }
+
+  #content .system-header {
+    min-height: 104px;
+  }
+
+  #content .system-header .system-name {
+    font-size: 16px;
+    line-height: 20px;
+    padding-top: 4px;
+  }
+}
+
+@media screen and (max-width: 380px) and (min-width: 339px) {
+  .form-wrapper form .form-group .col-sm-6 {
+    width: 50%;
+    font-size: 15px !important;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  #content_wrapper {
+    padding-bottom: 220px;
+  }
+
+  #content {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  #content .system-header {
+    min-height: 80px;
+    padding: 18px 0 0;
+  }
+
+  .form-wrapper form .form-group.pb15 {
+    padding-bottom: 0 !important;
+    display: flex;
+    justify-content: center;
+  }
+
+  .form-wrapper form .form-group .col-sm-6 {
+    width: 50%;
+    font-size: 13px;
+  }
+
+  .form-wrapper form .bc-form-btn,
+  .form-wrapper form button.btn.btn-lg {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    width: 100%;
+  }
+
+  .bc-form-passwordMethod .bc-recovery-url {
+    margin-left: -11px;
+    margin-right: 0;
+  }
+
+  .bc-reg-url {
+    margin-top: 24px;
+  }
+
+  .methods-wrapper .methods-sep {
+    margin-bottom: 10px;
+  }
+
+  .methods-wrapper .methods-other .btn-goto {
+    width: 100%;
+  }
+
+  .methods-wrapper .btn-meth {
+    height: 40px;
+  }
+}
+
+
+/*
+                Page registration
+*/
+.page-reg #main {
+  margin-left: -403px;
+  width: 806px;
+}
+
+.page-reg #content_wrapper {
+  padding-bottom: 120px;
+}
+
+.page-reg #content {
+  background: transparent;
+  padding: 0;
+}
+
+.page-reg #content .system-header {
+  min-height: 0;
+  padding: 0 0 36px;
+}
+
+.page-reg #content .system-header .system-logo {
+  padding: 0;
+}
+
+.page-reg #content .system-header .system-name {
+  padding-top: 10px;
+}
+
+.page-reg .page-title {
+  display: none;
+}
+
+.page-reg footer.system-footer {
+  padding-bottom: 32px;
+  text-align: center;
+}
+
+.page-reg footer.system-footer ul.support li {
+  border-right: 1px solid #2589dd;
+  display: inline-block;
+  padding: 0 5px 0 1px;
+}
+
+.page-reg footer.system-footer ul.support li:last-child {
+  border-right: none;
+}
+
+.page-reg footer.system-footer .copy {
+  padding-top: 12px;
+}
+
+.page-reg .form-section {
+  background: #fff;
+  padding: 48px 48px 32px;
+  border: 1px solid rgba(214, 218, 222, 0.5);
+  border-radius: 4px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.page-reg .form-section h2.section-title {
+  font-family: 'MCW XX Medium Regular', Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  line-height: 32px;
+  margin: 0 0 6px;
+  font-weight: normal;
+  position: relative;
+  top: -10px;
+}
+
+.page-reg .form-wrapper form .control-label {
+  display: block;
+}
+
+.page-reg .form-wrapper .form-row {
+  display: table;
+  width: 100%;
+}
+
+.page-reg .form-wrapper .form-row .form-col-1 {
+  display: table-cell;
+  padding-right: 16px;
+  vertical-align: top;
+  width: 50%;
+}
+
+.page-reg .form-wrapper .form-row .form-col-2 {
+  display: table-cell;
+  padding-top: 34px;
+  vertical-align: top;
+  width: 50%;
+}
+
+.page-reg .form-wrapper .form-row .form-col-1 .form-group {
+
+}
+
+.page-reg .form-wrapper .form-row .form-col-2 .help-block {
+  margin: 0;
+}
+
+.page-reg .form-wrapper form .text-agree .help-block {
+  color: #333;
+  display: block;
+  font-family: 'MCW XX Medium Regular', Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 9px 0 15px;
+  width: auto;
+}
+
+.page-reg .form-wrapper form .text-agree .help-block.mtn5 {
+  margin-top: 0 !important;
+}
+
+.page-reg .form-wrapper form #__div_repeat-password.form-group p.help-block {
+  display: none;
+}
+
+.page-reg .form-wrapper button.btn.btn-lg {
+  margin-left: 0;
+  width: auto;
+}
+
+.page-reg .form-wrapper form.bc-form-regFm button.btn.btn-lg {
+  margin: 0 0 16px !important;
+}
+
+
+/*
+                @media
+*/
+@media screen and (max-width: 1006px) {
+  .page-reg #content_wrapper {
+    padding-top: 24px;
+  }
+}
+
+@media screen and (max-width: 906px) {
+  .page-reg #main {
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0 48px;
+    width: auto;
+  }
+
+  .page-reg #content_wrapper {
+    padding-bottom: 152px;
+  }
+
+  .page-reg footer {
+    margin: 0 -48px;
+  }
+
+  .page-reg footer.system-footer ul.support li {
+    border: none;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .page-reg footer.system-footer ul.support li:last-child {
+    margin-bottom: 0;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .page-reg #main {
+    padding: 0;
+  }
+
+  .page-reg #content_wrapper {
+    padding: 0 0 168px;
+  }
+
+  .page-reg #content {
+    background: #fff;
+    padding: 24px 16px 8px;
+  }
+
+  .page-reg #content .system-header {
+    padding-bottom: 38px;
+  }
+
+  .page-reg #content .system-header .system-logo img {
+    max-height: 44px;
+  }
+
+  .page-reg #content .system-header .system-name {
+    font-size: 18px;
+    line-height: 24px;
+    padding-left: 50px;
+    padding-top: 6px;
+  }
+
+  .page-reg footer.system-footer {
+    margin: 0;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: left;
+  }
+
+  .page-reg .form-section {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0 0 32px;
+  }
+
+  .page-reg .form-section:last-of-type {
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 528px) {
+  .page-reg .form-wrapper .form-row {
+    display: block;
+  }
+
+  .page-reg .form-wrapper .form-row .form-col-1,
+  .page-reg .form-wrapper .form-row .form-col-2 {
+    display: block;
+    padding: 0;
+    width: 100%;
+  }
+
+  .page-reg .form-wrapper .form-row .form-col-2 .help-block {
+    margin-top: -12px;
+    padding-bottom: 16px;
+  }
+
+  .page-reg .form-wrapper .form-row .form-col-2 .help-block.mtn5 {
+    margin-top: -12px !important;
+  }
+
+  .page-reg .form-wrapper button.btn.btn-lg {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 478px) {
+  .page-reg #content .system-header {
+    padding-bottom: 40px;
+  }
+
+  .page-reg #content .system-header .system-name {
+    font-size: 16px;
+    line-height: 20px;
+    padding-top: 8px;
+  }
+}
+
+@media screen and (max-width: 394px) {
+  .page-reg #content_wrapper {
+    padding: 0 0 208px;
+  }
+
+  .page-reg footer.system-footer ul.support li {
+    margin-bottom: 4px;
+  }
+}
+
+@media screen and (max-width: 434px) {
+
+  .methods-wrapper .meth-ext.has-icon {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .methods-wrapper .btn-meth.has-logo {
+    width: 275px !important;
+  }
+
+  .btn-meth.meth-int {
+    width: 275px !important
+  }
+
+  .methods-wrapper .meth-ext.meth-facebook .meth-icon {
+    background-position: 35% 45% !important;
+  }
+
+  .methods-wrapper .meth-ext.meth-vk .meth-icon {
+    background-position: 35% 45% !important;
+  }
+
+  .methods-wrapper .meth-ext.meth-mail .meth-icon {
+    background-position: 35% 45% !important;
+    background-size: 25px;
+  }
+
+  .methods-wrapper .meth-ext.meth-ok .meth-icon {
+    background-position: 8px 8px !important;
+  }
+
+  .methods-wrapper .meth-ext.meth-yandex .meth-icon {
+    background-position: 40% 45% !important;
+  }
+
+  .methods-wrapper .meth-ext.has-icon {
+    margin-left: 3px !important;
+    margin-right: 4px !important;
+  }
+}

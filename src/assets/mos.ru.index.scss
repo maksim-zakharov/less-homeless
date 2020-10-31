@@ -1,0 +1,51 @@
+.mos_layouts_wrapper,
+.mos_footer {
+  font-family: Lato, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.mos_layouts_wrapper *,
+.mos_footer * {
+  box-sizing: border-box;
+}
+
+.mos_layouts_wrapper img {
+  display: inline-block;
+}
+
+body {
+  max-width: 100% !important;
+}
+
+body.ReactModal__Body--open {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.mos_layouts_wrapper,
+.mos_footer {
+  display: block !important;
+}
+
+body {
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Themes */
+body.theme-cityday {
+  background-color: #0b167e;
+}
+
+.loaderObject {
+  overflow: hidden;
+  display: none;
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  width: 1px;
+  height: 1px;
+}

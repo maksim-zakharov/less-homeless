@@ -1,0 +1,302 @@
+@import 'mos.ru.fonts';
+
+//
+//@font-face {
+//  font-family: "MCW XX";
+//url("fonts/MCWXXLight.woff2") format("woff2");
+//  font-weight: bold;
+//}
+//
+//@font-face {
+//  font-family: "MCW XX";
+//url("fonts/MCWXXMedium.woff2") format("woff2");
+//  font-weight: bold;
+//}
+
+.ant-btn, .ant-btn:hover, .ant-btn:active, .ant-btn:visited {
+  display: inline-block;
+  text-align: center;
+  border: none;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  color: #2589DE;
+
+  padding: 0;
+  font-size: 16px;
+  line-height: 24px;
+  height: 24px;
+
+  margin-bottom: 0;
+  box-shadow: none;
+
+  &.ant-btn-primary, &.ant-btn-primary:hover, &.ant-btn-primary:active, &.ant-btn-primary:visited {
+    //background: #4687D8;
+    min-width: 144px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    height: 48px;
+    background-color: #2589DE;
+    color: #ffffff;
+    padding: 6px 12px;
+    font-size: 18px;
+    line-height: 34px;
+  }
+}
+
+.ant-modal-close {
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  top: 17px;
+  right: 17px;
+
+  .ant-modal-close-x {
+    display: none;
+  }
+
+  &::before, &::after {
+    content: '';
+    width: 2px;
+    height: 15px;
+    background: #9EA4AC;
+    display: block;
+    position: absolute;
+    top: -2px;
+  }
+
+  &::after {
+    left: 5px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+
+  &::before {
+    right: 5px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+}
+
+.ant-modal-header {
+  border: none;
+  padding: 15px 15px 25px 15px;
+
+  .ant-modal-title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #333333;
+    margin: 10px 0px 0px;
+    padding-left: 15px;
+  }
+}
+
+.ant-modal-body {
+  padding: 0 30px;
+}
+
+.app-layout.ant-layout-has-sider.ant-layout nz-sider {
+  background: #ffffff;
+  padding: 8px 34px;
+  box-shadow: none;
+}
+
+.ant-modal-footer {
+  clear: both;
+  padding: 19px 30px 20px 30px;
+  width: 100%;
+  font-family: "MCW XX";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  border-top: 0;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+
+  .ant-btn {
+    margin: 14px 0 17px 0;
+    width: auto;
+    padding: 6px 31px;
+    min-width: 144px;
+  }
+}
+
+.ant-form-item {
+  display: block;
+  margin-right: 24px;
+}
+
+.ant-input {
+  min-width: 200px;
+  border: 1px solid #E3E3E3;
+}
+
+.ant-select {
+  min-width: 200px;
+}
+
+h1 {
+  color: #333333;
+  font-family: "MCW XX";
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 40px;
+
+  a, button {
+    margin-left: 16px;
+  }
+}
+
+.ant-card {
+  background: #ffffff;
+  margin-top: 28px;
+  padding: 32px 40px 40px 40px;
+  margin-bottom: 32px;
+  border: none;
+  transition: none;
+}
+
+.ant-card-head {
+  border: none;
+  padding: 0;
+}
+
+.ant-card-head-title {
+  flex: 1 0 auto;
+  font-family: "MCW XX";
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 40px;
+  color: #333333;
+  padding: 0;
+  margin-bottom: 33px;
+}
+
+.ant-breadcrumb {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  height: 40px;
+  min-height: 40px;
+}
+
+.ant-modal-wrap {
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ant-modal {
+  top: 0;
+  padding: 0;
+}
+
+.cdk-overlay-container {
+  z-index: 10000; // Перекрыть шапку mos.ru
+}
+
+.ant-descriptions-title {
+  margin-bottom: 13px;
+  font-family: "MCW XX";
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 32px;
+  color: #333333;
+}
+
+.ant-card-body {
+  padding: 0;
+}
+
+body {
+  background: #F3F5F7;
+  color: #333333;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: left;
+  font-family: "MCW XX", sans-serif;
+  font-weight: 400;
+}
+
+.ant-row:not(.ant-form-item) {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.ant-menu {
+  border: none !important;
+}
+
+.ant-menu-item {
+  background-color: transparent !important;
+  height: auto !important;
+  line-height: 1.1 !important;
+  padding: 16px 0 !important;
+  border-bottom: 1px solid #DEE3E9;
+
+  &::after {
+    display: none;
+  }
+
+  a {
+    margin-bottom: 12px;
+    font-family: "MCW XX";
+    font-weight: 500;
+    font-size: 18px;
+    color: #333 !important;
+    word-break: break-word;
+    white-space: initial;
+  }
+}
+
+nz-breadcrumb-item {
+  font: 14px/16px Lato, sans-serif;
+  font-weight: 600;
+  color: #a6acb3;
+  text-decoration: none;
+
+  .ant-breadcrumb-separator {
+    display: none;
+  }
+
+  &:not(:last-of-type)::after {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 5px;
+    width: 5px;
+    margin: -1px 11px 0 10px;
+    box-sizing: border-box;
+    border: 1px solid #a6acb3;
+    border-top: none;
+    border-right: none;
+    transform: rotate(-135deg);
+  }
+}
+
+.ant-descriptions-item-colon::after {
+  content: '';
+}
+//
+//a, a:active, a:hover, .ant-upload.ant-upload-drag p.ant-upload-drag-icon .anticon {
+//  color: #cd2525;
+//}
+//
+//.ant-upload.ant-upload-drag:not(.ant-upload-disabled):hover, .ant-radio-checked .ant-radio-inner, .ant-radio-checked::after, .ant-radio-input:focus + .ant-radio-inner, .ant-radio-wrapper:hover .ant-radio, .ant-radio:hover .ant-radio-inner {
+//  border-color: #cd2525;
+//}
+//
+//.ant-radio-inner::after{
+//  background-color: #cd2525;
+//}

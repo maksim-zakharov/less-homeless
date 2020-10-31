@@ -1,0 +1,66 @@
+@value variables: "../variables.module.css";
+@value color-bg-base, width-max, padding-lg, height-caption from variables;
+
+.header {
+  z-index: 1010;
+  position: fixed;
+  margin: 0 auto;
+  width: 100%;
+  top: 0;
+}
+
+.inside {
+  max-width: width-max;
+  background-color: color-bg-base;
+
+  margin: 0 auto;
+}
+
+:global(.theme-cityday) .inside {
+  background-color: #081561;
+  /*background-image: url('./theme-cityday-bg.svg');*/
+  background-repeat: no-repeat;
+  background-position-x: calc(100% - 300px);
+}
+
+@media (min-width: 1024px) {
+  :global(.device-desktop) .inside {
+    padding-left: padding-lg;
+    padding-right: padding-lg;
+  }
+}
+
+@media (min-width: 1024px) {
+  :global(.device-tablet) .inside,
+  :global(.device-phone) .inside {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+:global(.globalOverlay) {
+  max-width: width-max;
+  margin: 0 auto;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  min-height: 500px;
+  z-index: -1;
+}
+
+:global(.mos-layouts__teaser) {
+  max-width: width-max;
+  margin: 0 auto;
+}
+
+/* Не печатать в Print версии!*/
+@media print {
+  .header {
+    position: static !important;
+  }
+  .spacer {
+    display: none !important;
+  }
+}

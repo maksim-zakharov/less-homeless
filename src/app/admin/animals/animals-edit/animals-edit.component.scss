@@ -1,0 +1,22 @@
+
+:host ::ng-deep .avatar-uploader > .ant-upload {
+  width: 128px;
+  height: 128px;
+}
+
+img {
+  width: 358px;
+  height: 358px;
+  object-fit: cover;
+}
+
+nz-upload::ng-deep .ant-upload.ant-upload-select-picture-card {
+  width: 358px;
+  height: 358px;
+
+  & > .ant-upload {
+    padding: 0;
+    width: 358px;
+    height: 358px;
+  }
+}

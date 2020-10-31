@@ -1,0 +1,119 @@
+@value variables: "./variables.module.css";
+@value font-primary, font-secondary from variables;
+@value font-weight-light, font-weight-base, font-weight-semibold, font-weight-bold from variables;
+@value font-size-base, font-size-middle from variables;
+@value color-primary, color-footer-secondary, height-menu, color-border, color-primary-active, font-size-large from variables;
+
+/*
+* Структура
+*/
+.item {
+  display: inline-block;
+}
+
+.right {
+  float: right;
+}
+
+.underline {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.upperline {
+  border-top-width: 1px;
+  border-top-style: solid;
+}
+
+.divider {
+  composes: underline;
+  border-bottom-color: color-border;
+}
+
+.radius {
+  border-radius: 2px;
+}
+
+.unstyledButton {
+  cursor: pointer;
+
+  border: 0 none transparent;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+
+  background: transparent;
+
+  color: inherit;
+  font: inherit;
+
+  line-height: normal;
+
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  -webkit-appearance: none;
+
+  outline: none;
+}
+
+.unstyledButton:active,
+.unstyledButton:focus {
+  outline: none !important;
+}
+
+.unstyledButton::-moz-focus-inner {
+  border: 0 !important;
+}
+
+/*
+* Тень
+*/
+.shadow {
+  box-shadow: 0 1px 0 0 color-footer-secondary;
+}
+
+/*
+* Шрифт
+*/
+.primary {
+  font-family: font-primary;
+}
+
+.secondary {
+  font-family: font-secondary;
+}
+
+.small {
+  font-size: font-size-base;
+}
+
+.middle {
+  font-size: font-size-middle;
+}
+
+.large {
+  font-size: font-size-large;
+}
+
+.extralight {
+  font-weight: font-weight-extalight;
+}
+
+.light {
+  font-weight: font-weight-light;
+}
+
+.semibold {
+  font-weight: font-weight-semibold;
+}
+
+.bold {
+  font-weight: font-weight-bold;
+}
+
+.smooth {
+  transition-duration: 0.15s;
+  transition-timing-function: ease-in-out;
+}
