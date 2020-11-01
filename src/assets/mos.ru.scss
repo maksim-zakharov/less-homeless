@@ -372,6 +372,10 @@ input[disabled], input[readonly], .ant-radio-wrapper-disabled.ant-radio-wrapper-
   }
 }
 
+.ant-form-item-label > label::after {
+  display: none;
+}
+
 .ant-radio-wrapper-disabled:not(.ant-radio-wrapper-checked) {
   display: none;
 }

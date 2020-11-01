@@ -30,7 +30,9 @@
     <nz-form-item>
       <nz-form-label [nzRequired]="!disabled" nzFor="district">Административный округ</nz-form-label>
       <nz-form-control nzErrorTip="The input is not valid doctor fullname!">
-        <input nz-input formControlName="district" id="district" [attr.disabled]="disabled? true : null" [readonly]="disabled"/>
+        <nz-select nzShowSearch formControlName="district" id="district" [nzDisabled]="disabled">
+          <nz-option [nzValue]="breed" [nzLabel]="breed.name" *ngFor="let breed of districts$ | async"></nz-option>
+        </nz-select>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>

@@ -40,6 +40,7 @@
     "@nestjs/ng-universal": "^2.0.1",
     "@nestjs/passport": "^7.1.0",
     "@nestjs/platform-express": "^6.0.0",
+    "@nestjs/swagger": "^4.6.1",
     "@nestjs/typeorm": "^7.1.0",
     "@nguniversal/common": "^10.0.1",
     "@nguniversal/express-engine": "^8.0.0",
@@ -58,6 +59,7 @@
     "pg": "^8.3.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.5",
+    "swagger-ui-express": "^4.1.4",
     "tslib": "^2.0.0",
     "typeorm": "^0.2.25",
     "zone.js": "~0.10.3"

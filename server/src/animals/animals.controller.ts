@@ -20,54 +20,117 @@ import { DeathCause } from '../entities/death-cause.entity';
 import { ReasonForLeaving } from '../entities/reason-for-leaving.entity';
 import { Euthanasia } from '../entities/euthanasia.entity';
 import { District } from '../entities/district.entity';
+import { ApiExcludeEndpoint, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
-
+@ApiTags('animals')
 @Controller('animals')
 export class AnimalsController {
 
   constructor(private connection: Connection, private s3: YandexS3Service, private animalsService: AnimalsService) {
   }
 
+  @ApiResponse({
+    status: 200,
+    type: Animal
+  })
+  @ApiResponse({
+    status: 200
+  })
+  @ApiOperation({description: 'Возвращает массив животных'})
   @Get()
   getAll(): Promise<Animal[]> {
     return this.animalsService.getAll();
   }
 
+  @ApiResponse({
+    status: 200,
+    type: ReasonForLeaving
+  })
+  @ApiOperation({description: 'Возвращает массив причин выбытия',})
   @Get('leaving-reason')
   getLeavingReason(): Promise<ReasonForLeaving[]> {
     return this.connection.getRepository(ReasonForLeaving).find();
   }
 
+  @ApiResponse({
+    status: 200,
+    type: Euthanasia
+  })
+  @ApiOperation({
+    description: 'Возвращает массив причин эвтаназии',
+  })
   @Get('euthanasia-reason')
   getEuthanasiaReasons(): Promise<Euthanasia[]> {
     return this.connection.getRepository(Euthanasia).find();
   }
 
+  @ApiResponse({
+    status: 200,
+    type: DeathCause
+  })
+  @ApiOperation({
+    description: 'Возвращает массив причин смерти',
+  })
   @Get('cause-death')
   getCauseDeath(): Promise<DeathCause[]> {
     return this.connection.getRepository(DeathCause).find();
   }
 
+  @ApiResponse({
+    status: 200,
+    type: Shelter
+  })
+  @ApiOperation({
+    description: 'Возвращает массив приютов',
+  })
   @Get('shelters')
   getShelters(): Promise<Shelter[]> {
     return this.connection.getRepository(Shelter).find();
   }
 
+  @ApiResponse({
+    status: 200,
+    type: TailType
+  })
+  @ApiOperation({
+    description: 'Возвращает массив типов хвостов',
+  })
   @Get('tail-types')
   getTailTypes(): Promise<TailType[]> {
     return this.connection.getRepository(TailType).find();
   }
 
+  @ApiResponse({
+    status: 200,
+    type: PetType
+  })
+  @ApiOperation({
+    description: 'Возвращает массив видов животных',
+  })
   @Get('pet-types')
   getPetTypes(): Promise<PetType[]> {
     return this.connection.getRepository(PetType).find();
   }
 
+  @ApiResponse({
+    status: 200,
+    type: PetSize
+  })
+  @ApiOperation({
+    description: 'Возвращает массив размеров животных',
+  })
   @Get('pet-sizes')
   getPetSizes(): Promise<PetSize[]> {
     return this.connection.getRepository(PetSize).find();
   }
 
+  @ApiResponse({
+    status: 200,
+    type: EarType
+  })
+  @ApiOperation({
+    description: 'Возвращает массив типов ушей',
+  })
   @Get('ear-types')
   getEarTypes(): Promise<EarType[]> {
     return this.connection.getRepository(EarType).find();
@@ -78,6 +141,13 @@ export class AnimalsController {
     return this.connection.getRepository(DogFur).find();
   }
 
+  @ApiResponse({
+    status: 200,
+    type: CatFur
+  })
+  @ApiOperation({
+    description: 'Возвращает массив типов шерсти',
+  })
   @Get('cat-furs')
   getCatFurs(): Promise<CatFur[]> {
     return this.connection.getRepository(CatFur).find();
@@ -88,16 +158,37 @@ export class AnimalsController {
     return this.connection.getRepository(DogColor).find();
   }
 
+  @ApiResponse({
+    status: 200,
+    type: CatColor
+  })
+  @ApiOperation({
+    description: 'Возвращает массив типов окраса',
+  })
   @Get('cat-colors')
   getCatColors(): Promise<CatColor[]> {
     return this.connection.getRepository(CatColor).find();
   }
 
+  @ApiResponse({
+    status: 200,
+    type: PetGender
+  })
+  @ApiOperation({
+    description: 'Возвращает массив полов',
+  })
   @Get('pet-genders')
   getPetGenders(): Promise<PetGender[]> {
     return this.connection.getRepository(PetGender).find();
   }
 
+  @ApiResponse({
+    status: 200,
+    type: District
+  })
+  @ApiOperation({
+    description: 'Возвращает массив административных округов',
+  })
   @Get('districts')
   getDistricts(): Promise<District[]> {
     return this.connection.getRepository(District).find();
@@ -108,11 +199,25 @@ export class AnimalsController {
     return this.connection.getRepository(DogBreed).find();
   }
 
+  @ApiResponse({
+    status: 200,
+    type: CatBreed
+  })
+  @ApiOperation({
+    description: 'Возвращает массив пород',
+  })
   @Get('cat-breeds')
   getCatBreeds(): Promise<CatBreed[]> {
     return this.connection.getRepository(CatBreed).find();
   }
 
+  @ApiResponse({
+    status: 200,
+    type: Animal
+  })
+  @ApiOperation({
+    description: 'Возвращает животное с выбранным идентификатором',
+  })
   @Get(':id')
   async getById(@Param('id') id: number): Promise<Animal> {
     const animal = await this.animalsService.getById(id);
@@ -125,11 +230,13 @@ export class AnimalsController {
     return animal;
   }
 
+  @ApiExcludeEndpoint()
   @Post()
   create(@Body() newAnimal: NewAnimal): Promise<Animal> {
     return this.animalsService.create(newAnimal);
   }
 
+  @ApiExcludeEndpoint()
   @Post(':id/photo')
   @UseInterceptors(FileInterceptor('photo'))
   async savePhoto(@UploadedFile() photo, @Param('id') id: number): Promise<any> {
@@ -141,6 +248,7 @@ export class AnimalsController {
     return this.animalsService.update(id, animal);
   }
 
+  @ApiExcludeEndpoint()
   @Get(':id/docs')
   getDocs(@Param('id') id: number): Promise<{ name: string, url: string, createDate: string }[]> {
     return this.s3.get<{ Prefix: string, Contents: any[] }>(`/docs/${id}/`).then(docs =>
@@ -152,12 +260,14 @@ export class AnimalsController {
     );
   }
 
+  @ApiExcludeEndpoint()
   @Post(':id/docs')
   @UseInterceptors(FileInterceptor('docs'))
   saveDocs(@UploadedFile() docs, @Param('id') id: number): Promise<any> {
     return this.s3.upload(docs.buffer, `${docs.originalname}`, `/docs/${id}/`);
   }
 
+  @ApiExcludeEndpoint()
   @Put(':id')
   async update(@Param('id') id: number, @Body() updatedAnimal: UpdatedAnimal): Promise<Animal> {
     const animal = await this.animalsService.getById(id);
@@ -172,6 +282,7 @@ export class AnimalsController {
     return animal;
   }
 
+  @ApiExcludeEndpoint()
   @Delete(':id')
   delete(@Param('id') id: number): Promise<void> {
     const order = this.animalsService.getById(id);
