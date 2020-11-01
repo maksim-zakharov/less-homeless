@@ -32,7 +32,8 @@ import { District } from '../entities/district.entity';
   imports: [TypeOrmModule.forFeature([
     Animal, CaptureInfo, Sterilization, CatBreed, CatColor, CatFur, DeathCause, DogBreed, DogColor,
     ArrivalInfo, DisposalInfo, District, DogFur, EarType, OperOrg, PetGender, PetSize, PetType,
-    ReasonForLeaving, Euthanasia, Shelter, TailType, Vaccination, ParasiteTreatment])],
+    ReasonForLeaving, Euthanasia, Shelter, TailType, Vaccination, ParasiteTreatment
+  ])],
   controllers: [AnimalsController],
   providers: [AnimalsService, YandexS3Service]
 })

@@ -7,7 +7,6 @@ import { CatColor } from '../entities/cat-color.entity';
 import { CatFur } from '../entities/cat-fur.entity';
 import { EarType } from '../entities/ear-type.entity';
 import { PetSize } from '../entities/pet-size.entity';
-import { Shelter } from '../entities/shelter.entity';
 import { Entity } from 'typeorm';
 import { ReasonForLeaving } from '../entities/reason-for-leaving.entity';
 import { DeathCause } from '../entities/death-cause.entity';
