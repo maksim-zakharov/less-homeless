@@ -17,17 +17,23 @@ import { PetGender } from '../entities/pet-gender.entity';
 import { PetSize } from '../entities/pet-size.entity';
 import { PetType } from '../entities/pet-type.entity';
 import { ReasonForLeaving } from '../entities/reason-for-leaving.entity';
-import { ReasonForEuthanasia } from '../entities/reason-for-euthanasia.entity';
 import { Shelter } from '../entities/shelter.entity';
 import { TailType } from '../entities/tail-type.entity';
 import { Vaccination } from '../entities/vaccination.entity';
 import { ParasiteTreatment } from '../entities/parasite-treatment.entity';
 import { CaptureInfo } from '../entities/capture-info.entity';
 import { Sterilization } from '../entities/sterilization.entity';
+import { Euthanasia } from '../entities/euthanasia.entity';
+import { ArrivalInfo } from '../entities/arrival-info.entity';
+import { DisposalInfo } from '../entities/disposal-info.entity';
+import { District } from '../entities/district.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Animal, CaptureInfo, Sterilization, CatBreed, CatColor, CatFur, DeathCause, DogBreed, DogColor,
-    DogFur, EarType, OperOrg, PetGender, PetSize, PetType, ReasonForLeaving, ReasonForEuthanasia, Shelter, TailType, Vaccination, ParasiteTreatment])],
+  imports: [TypeOrmModule.forFeature([
+    Animal, CaptureInfo, Sterilization, CatBreed, CatColor, CatFur, DeathCause, DogBreed, DogColor,
+    ArrivalInfo, DisposalInfo, District, DogFur, EarType, OperOrg, PetGender, PetSize, PetType,
+    ReasonForLeaving, Euthanasia, Shelter, TailType, Vaccination, ParasiteTreatment
+  ])],
   controllers: [AnimalsController],
   providers: [AnimalsService, YandexS3Service]
 })

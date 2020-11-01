@@ -17,8 +17,9 @@ import { PetType } from '../entities/pet-type.entity';
 import { TailType } from '../entities/tail-type.entity';
 import { Shelter } from '../entities/shelter.entity';
 import { DeathCause } from '../entities/death-cause.entity';
-import { ReasonForEuthanasia } from '../entities/reason-for-euthanasia.entity';
 import { ReasonForLeaving } from '../entities/reason-for-leaving.entity';
+import { Euthanasia } from '../entities/euthanasia.entity';
+import { District } from '../entities/district.entity';
 
 
 @Controller('animals')
@@ -38,8 +39,8 @@ export class AnimalsController {
   }
 
   @Get('euthanasia-reason')
-  getEuthanasiaReasons(): Promise<ReasonForEuthanasia[]> {
-    return this.connection.getRepository(ReasonForEuthanasia).find();
+  getEuthanasiaReasons(): Promise<Euthanasia[]> {
+    return this.connection.getRepository(Euthanasia).find();
   }
 
   @Get('cause-death')
@@ -95,6 +96,11 @@ export class AnimalsController {
   @Get('pet-genders')
   getPetGenders(): Promise<PetGender[]> {
     return this.connection.getRepository(PetGender).find();
+  }
+
+  @Get('districts')
+  getDistricts(): Promise<District[]> {
+    return this.connection.getRepository(District).find();
   }
 
   @Get('dog-breeds')

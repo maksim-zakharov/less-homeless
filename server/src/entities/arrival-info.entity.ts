@@ -1,10 +1,10 @@
 import { Column, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Animal } from '../animals/animal';
 import { Entity } from 'typeorm';
-import { District } from './district.entity';
+import { Shelter } from './shelter.entity';
 
 @Entity()
-export class CaptureInfo {
+export class ArrivalInfo {
   @PrimaryGeneratedColumn()
   public id: number;
 
@@ -18,19 +18,10 @@ export class CaptureInfo {
   public captureDocUrl: string;
 
   @Column()
-  public orderId: number;
+  public employeeName: string;
 
-  @Column()
-  public orderDate: string;
-
-  @Column()
-  public orderDocUrl: string;
-
-  @Column()
-  public address: string;
-
-  @ManyToOne(() => District)
-  public district: District;
+  @ManyToOne(() => Shelter)
+  shelter?: Shelter;
 
   @OneToOne(() => Animal, {cascade: true})
   animal: Animal;
