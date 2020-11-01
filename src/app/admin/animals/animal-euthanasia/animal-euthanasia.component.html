@@ -2,32 +2,32 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
   <div nz-row [nzGutter]="24" nzType="flex" nzJustify="start">
     <nz-form-item>
-      <nz-form-label nzRequired nzFor="date">Дата эвтаназии</nz-form-label>
+      <nz-form-label [nzRequired]="!disabled" nzFor="date">Дата эвтаназии</nz-form-label>
       <nz-form-control nzErrorTip="The input is not valid sterilization station Address!">
-        <nz-date-picker formControlName="date"
+        <nz-date-picker formControlName="date" [nzDisabled]="disabled"
                         id="date"></nz-date-picker>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label nzRequired nzFor="reason">Причина эвтаназии</nz-form-label>
+      <nz-form-label [nzRequired]="!disabled" nzFor="reason">Причина эвтаназии</nz-form-label>
       <nz-form-control nzErrorTip="The input is not valid sterilization station arrival date!">
-        <input nz-input formControlName="reason" id="reason"/>
+        <input nz-input formControlName="reason" id="reason" [attr.disabled]="disabled? true : null" [readonly]="disabled"/>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label nzRequired nzFor="veterinarianName">ФИО ветврача</nz-form-label>
+      <nz-form-label [nzRequired]="!disabled" nzFor="veterinarianName">ФИО ветврача</nz-form-label>
       <nz-form-control nzErrorTip="The input is not valid doctor fullname!">
-        <input nz-input formControlName="veterinarianName" id="veterinarianName"/>
+        <input nz-input formControlName="veterinarianName" id="veterinarianName" [attr.disabled]="disabled? true : null" [readonly]="disabled"/>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label nzRequired nzFor="act">Акт эвтаназии</nz-form-label>
+      <nz-form-label [nzRequired]="!disabled" nzFor="act">Акт эвтаназии</nz-form-label>
       <nz-form-control nzErrorTip="The input is not valid sterilization station arrival date!">
-        <input nz-input formControlName="act" id="act"/>
+        <input nz-input formControlName="act" id="act" [attr.disabled]="disabled? true : null" [readonly]="disabled"/>
       </nz-form-control>
     </nz-form-item>
   </div>
-  <nz-form-item>
+  <nz-form-item *ngIf="!disabled">
     <nz-form-control>
       <button nz-button type="submit" nzType="primary">Сохранить</button>
     </nz-form-control>

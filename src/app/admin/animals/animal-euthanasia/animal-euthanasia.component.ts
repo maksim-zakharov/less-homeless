@@ -1,4 +1,4 @@
-import { Component, EventEmitter, forwardRef, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 
 @Component({
@@ -14,6 +14,7 @@ import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Valida
   ],
 })
 export class AnimalEuthanasiaComponent implements OnInit, ControlValueAccessor {
+  @Input() disabled: false;
 
   form: FormGroup;
 
@@ -46,7 +47,7 @@ export class AnimalEuthanasiaComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue(obj: any): void {
-    this.form.patchValue([...obj] || {});
+    this.form.patchValue(obj || {});
 
     this.onChange([this.form.value]);
   }

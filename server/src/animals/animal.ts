@@ -80,13 +80,13 @@ export class NewAnimal {
   /**
    * Приучен к лотку
    */
-  @Column()
+  @Column({nullable: true})
   trayAccustomed: boolean;
 
   /**
    * Приучен к лотку
    */
-  @Column()
+  @Column({nullable: true})
   walkingAccustomed: boolean;
 
   /**

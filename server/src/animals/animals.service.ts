@@ -17,7 +17,7 @@ export class AnimalsService {
 
   getById(id: number): Promise<Animal> {
     return this.animalsRepository.findOne({id}, {
-      relations: ['sterilization', 'captureInfo', 'vaccination', 'size', 'euthanasiaReason', 'shelter', 'leavingReason', 'parasiteTreatment', 'tail', 'ears', 'causeDeath', 'wool', 'color', 'sex', 'breed', 'category']
+      relations: ['sterilization', 'captureInfo', 'vaccination', 'size', 'euthanasia', 'leavingReason', 'parasiteTreatment', 'tail', 'ears', 'causeDeath', 'wool', 'color', 'sex', 'breed', 'category']
     });
   }
 

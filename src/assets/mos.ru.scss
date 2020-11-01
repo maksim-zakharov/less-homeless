@@ -336,3 +336,42 @@ nz-breadcrumb-item {
 //.ant-radio-inner::after{
 //  background-color: #cd2525;
 //}
+
+//.ant-select-disabled.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+//  background: transparent;
+//  border: none !important;
+//}
+
+.ant-select-disabled nz-select-arrow, nz-date-picker .ant-picker-suffix {
+  display: none;
+}
+
+input[disabled], input[readonly], .ant-radio-wrapper-disabled.ant-radio-wrapper-checked, textarea[readonly], nz-date-picker.ant-picker-disabled, .ant-select-disabled.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+  font-family: Moscow Sans;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  pointer-events: none;
+  align-items: center;
+  color: #000000;
+  border: none;
+  resize: none;
+  background: transparent !important;
+
+  &::placeholder {
+    color: transparent;
+  }
+}
+
+.ant-radio-wrapper-disabled.ant-radio-wrapper-checked {
+
+  .ant-radio-checked {
+    display: none;
+  }
+}
+
+.ant-radio-wrapper-disabled:not(.ant-radio-wrapper-checked) {
+  display: none;
+}

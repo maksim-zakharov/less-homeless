@@ -6,7 +6,6 @@ import { CatFur } from './models/cat-fur.entity';
 import { EarType } from './models/ear-type.entity';
 import { TailType } from './models/tail-type.entity';
 import { PetSize } from './models/pet-size.entity';
-import { Shelter } from './models/shelter.entity';
 import { ReasonForLeaving } from './models/reason-for-leaving.entity';
 import { DeathCause } from './models/death-cause.entity';
 import { Vaccination } from './models/vaccination.entity';
@@ -14,6 +13,8 @@ import { ParasiteTreatment } from './models/parasite-treatment.entity';
 import { CaptureInfo } from './models/capture-info.entity';
 import { Sterilization } from './models/sterilization.entity';
 import { Euthanasia } from './models/euthanasia.entity';
+import { DisposalInfo } from './models/disposal-info.entity';
+import { ArrivalInfo } from './models/arrival-info.entity';
 
 export class AnimalModel {
 
@@ -42,7 +43,6 @@ export class AnimalModel {
   specialSigns: string;
 
   identificationLabel: string;
-  shelter: Shelter;
 
   doctorName: string;
 
@@ -67,6 +67,10 @@ export class AnimalModel {
   parasiteTreatment: ParasiteTreatment;
 
   captureInfo: CaptureInfo;
+
+  arrivalInfo?: ArrivalInfo;
+
+  disposalInfo: DisposalInfo;
 
   sterilization: Sterilization;
 }

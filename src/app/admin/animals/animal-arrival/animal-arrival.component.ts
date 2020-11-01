@@ -1,37 +1,37 @@
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
-import { ParasiteTreatment } from '../models/parasite-treatment.entity';
+import { AnimalsService } from '../animals.service';
 
 @Component({
-  selector: 'app-animal-parasite-treatment',
-  templateUrl: './animal-parasite-treatment.component.html',
-  styleUrls: ['./animal-parasite-treatment.component.scss'],
+  selector: 'app-animal-arrival',
+  templateUrl: './animal-arrival.component.html',
+  styleUrls: ['./animal-arrival.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => AnimalParasiteTreatmentComponent),
+      useExisting: forwardRef(() => AnimalArrivalComponent),
       multi: true,
     },
   ],
 })
-export class AnimalParasiteTreatmentComponent implements OnInit, ControlValueAccessor {
+export class AnimalArrivalComponent implements OnInit, ControlValueAccessor {
   @Input() disabled: false;
 
   form: FormGroup;
-  value: ParasiteTreatment;
+
+  shelters$ = this.animalService.getShelters();
 
   @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private animalService: AnimalsService) {
   }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      medicineName: ['', [Validators.required]],
+      documentNumber: ['', [Validators.required]],
       date: ['', [Validators.required]],
-      animalWeight: ['', [Validators.required]],
-      dose: ['', [Validators.required]],
-      veterinarianName: ['', [Validators.required]]
+      shelter: ['', [Validators.required]],
+      employeeName: ['', [Validators.required]],
     });
   }
 
@@ -51,9 +51,8 @@ export class AnimalParasiteTreatmentComponent implements OnInit, ControlValueAcc
 
   writeValue(obj: any): void {
     this.form.patchValue(obj || {});
-    this.value = obj || [];
 
-    this.onChange(this.form.value);
+    this.onChange([this.form.value]);
   }
 
   submit(): void {
@@ -63,7 +62,7 @@ export class AnimalParasiteTreatmentComponent implements OnInit, ControlValueAcc
       this.form.controls[i].updateValueAndValidity();
     }
 
-    this.onChange(this.form.value);
+    this.onChange([this.form.value]);
     this.onSubmit.next();
   }
 }

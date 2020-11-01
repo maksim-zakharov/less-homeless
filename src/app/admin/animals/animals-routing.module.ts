@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: 'list', component: AnimalsListComponent},
   {path: 'new', component: AnimalsEditComponent},
   {path: ':id/edit', component: AnimalsEditComponent},
-  {path: ':id', component: AnimalsDetailsComponent},
+  {path: ':id', component: AnimalsEditComponent, data: {readonly: true}},
   {
     path: '**', redirectTo: 'list'
   }

@@ -27,6 +27,8 @@ import { AnimalModel } from '../animal.model';
 })
 export class AnimalsEditComponent implements OnInit {
 
+  public readonly = this.route.snapshot.data.readonly;
+
   constructor(private msg: NzMessageService,
               private fb: FormBuilder,
               private ordersService: AnimalsService,
@@ -38,7 +40,6 @@ export class AnimalsEditComponent implements OnInit {
 
   file: File;
   fileList: File[] = [];
-  //   nzAction="/api/animals/{{animalId$ | async}}/photo"
 
   animalId$ = this.route.params.pipe(
     pluck('id'),
@@ -53,7 +54,7 @@ export class AnimalsEditComponent implements OnInit {
   );
 
   titleText$ = this.animalId$.pipe(
-    map(id => `Редактирование карточки учета животного №${id}`),
+    map(id => this.readonly ? `Карточка учета животного №${id}` : `Редактирование карточки учета животного №${id}`),
     startWith('Создание карточки учета животного'),
     shareReplay(1)
   );
@@ -120,15 +121,19 @@ export class AnimalsEditComponent implements OnInit {
       size: [null, []],
       weight: [null, []],
       specialSigns: [null, []],
-      shelter: [null, []],
+      healthStatus: [null, []],
+      status: [null, []],
+      attitudeTowardsAnimals: [null, []],
       doctorName: [null, []],
       dischargeDate: [null, []],
-      euthanasiaReason: [null, []],
+      euthanasia: [null, []],
       leavingReason: [null, []],
       causeDeath: [null, []],
       imgSrc: [null, []],
       vaccination: [[], []],
       parasiteTreatment: [null, []],
+      disposalInfo: [null, []],
+      arrivalInfo: [null, []],
       captureInfo: [null, []],
       sterilization: [null, []],
     });

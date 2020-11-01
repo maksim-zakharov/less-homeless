@@ -3,7 +3,7 @@
   <div nz-row [nzGutter]="24" nzType="flex" nzJustify="start">
     <nz-form-item nz-col nzSpan="24">
       <nz-form-control nzErrorTip="The input is not valid sterilization station name!">
-        <nz-radio-group formControlName="status" id="status">
+        <nz-radio-group formControlName="status" id="status" [nzDisabled]="disabled">
           <label nz-radio nzValue="Стерилизовано в приюте">Стерилизовано в приюте</label>
           <label nz-radio nzValue="Не стерилизовано">Не стерилизовано</label>
           <label nz-radio nzValue="Поступило стерилизованным">Поступило стерилизованным</label>
@@ -13,27 +13,27 @@
   </div>
   <div nz-row [nzGutter]="24" nzType="flex" nzJustify="start">
     <nz-form-item nz-col nzSpan="8">
-      <nz-form-label nzRequired nzFor="date">Дата стерилизации</nz-form-label>
+      <nz-form-label [nzRequired]="!disabled" nzFor="date">Дата стерилизации</nz-form-label>
       <nz-form-control nzErrorTip="The input is not valid sterilization station Address!">
-        <nz-date-picker formControlName="date"
+        <nz-date-picker formControlName="date" [nzDisabled]="disabled"
                         id="date"></nz-date-picker>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item nz-col nzSpan="8">
-      <nz-form-label nzRequired nzFor="planDate">Плановая дата стерилизации</nz-form-label>
+      <nz-form-label [nzRequired]="!disabled" nzFor="planDate">Плановая дата стерилизации</nz-form-label>
       <nz-form-control nzErrorTip="The input is not valid sterilization station arrival date!">
-        <nz-date-picker formControlName="planDate"
+        <nz-date-picker formControlName="planDate" [nzDisabled]="disabled"
                         id="planDate"></nz-date-picker>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item nz-col nzSpan="8">
-      <nz-form-label nzRequired nzFor="veterinarianName">ФИО ветврача</nz-form-label>
+      <nz-form-label [nzRequired]="!disabled" nzFor="veterinarianName">ФИО ветврача</nz-form-label>
       <nz-form-control nzErrorTip="The input is not valid doctor fullname!">
-        <input nz-input formControlName="veterinarianName" id="veterinarianName"/>
+        <input nz-input formControlName="veterinarianName" id="veterinarianName" [attr.disabled]="disabled? true : null" [readonly]="disabled"/>
       </nz-form-control>
     </nz-form-item>
   </div>
-  <nz-form-item>
+  <nz-form-item *ngIf="!disabled">
     <nz-form-control>
       <button nz-button type="submit" nzType="primary">Сохранить</button>
     </nz-form-control>

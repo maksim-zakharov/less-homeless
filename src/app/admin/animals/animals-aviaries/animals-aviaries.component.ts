@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { AnimalsService } from '../animals.service';
 import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';

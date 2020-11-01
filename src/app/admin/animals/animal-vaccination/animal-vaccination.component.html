@@ -2,44 +2,44 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
   <div nz-row [nzGutter]="24" nzType="flex" nzJustify="start">
     <nz-form-item>
-      <nz-form-label nzRequired nzFor="date">Дата обработки</nz-form-label>
+      <nz-form-label [nzRequired]="!disabled" nzFor="date">Дата обработки</nz-form-label>
       <nz-form-control nzErrorTip="The input is not valid sterilization station Address!">
-        <nz-date-picker formControlName="date"
+        <nz-date-picker formControlName="date" [nzDisabled]="disabled"
                         id="date"></nz-date-picker>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label nzRequired nzFor="animalWeight">Вес животного</nz-form-label>
+      <nz-form-label [nzRequired]="!disabled" nzFor="animalWeight">Вес животного</nz-form-label>
       <nz-form-control nzErrorTip="The input is not valid sterilization station arrival date!">
-        <input nz-input formControlName="animalWeight" id="animalWeight"/>
+        <input nz-input formControlName="animalWeight" id="animalWeight" [attr.disabled]="disabled? true : null" [readonly]="disabled"/>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label nzRequired nzFor="medicineName">Название препарата</nz-form-label>
+      <nz-form-label [nzRequired]="!disabled" nzFor="medicineName">Название препарата</nz-form-label>
       <nz-form-control nzErrorTip="The input is not valid sterilization station arrival date!">
-        <input nz-input formControlName="medicineName" id="medicineName"/>
+        <input nz-input formControlName="medicineName" id="medicineName" [attr.disabled]="disabled? true : null" [readonly]="disabled"/>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label nzRequired nzFor="dose">Дозировка</nz-form-label>
+      <nz-form-label [nzRequired]="!disabled" nzFor="dose">Дозировка</nz-form-label>
       <nz-form-control nzErrorTip="The input is not valid sterilization station arrival date!">
-        <input nz-input formControlName="dose" id="dose"/>
+        <input nz-input formControlName="dose" id="dose" [attr.disabled]="disabled? true : null" [readonly]="disabled"/>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label nzRequired nzFor="veterinarianName">ФИО ветврача</nz-form-label>
+      <nz-form-label [nzRequired]="!disabled" nzFor="veterinarianName">ФИО ветврача</nz-form-label>
       <nz-form-control nzErrorTip="The input is not valid doctor fullname!">
-        <input nz-input formControlName="veterinarianName" id="veterinarianName"/>
+        <input nz-input formControlName="veterinarianName" id="veterinarianName" [attr.disabled]="disabled? true : null" [readonly]="disabled"/>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label nzRequired nzFor="medicineSeries">Номер серии препарата</nz-form-label>
+      <nz-form-label [nzRequired]="!disabled" nzFor="medicineSeries">Номер серии препарата</nz-form-label>
       <nz-form-control nzErrorTip="The input is not valid doctor fullname!">
-        <input nz-input formControlName="medicineSeries" id="medicineSeries"/>
+        <input nz-input formControlName="medicineSeries" id="medicineSeries" [attr.disabled]="disabled? true : null" [readonly]="disabled"/>
       </nz-form-control>
     </nz-form-item>
   </div>
-  <nz-form-item>
+  <nz-form-item *ngIf="!disabled">
     <nz-form-control>
       <button nz-button type="submit" nzType="primary">Сохранить</button>
     </nz-form-control>
