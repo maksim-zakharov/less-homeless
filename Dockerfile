@@ -8,9 +8,6 @@ RUN npm install
 
 COPY . .
 
-# Накатим миграции если есть
-#RUN npm run migration:run
-
 # Сбилдим бек и фронт
 RUN npm run build:ssr
 
