@@ -7,13 +7,13 @@ import { EarType } from './models/ear-type.entity';
 import { TailType } from './models/tail-type.entity';
 import { PetSize } from './models/pet-size.entity';
 import { Shelter } from './models/shelter.entity';
-import { ReasonForEuthanasia } from './models/reason-for-euthanasia.entity';
 import { ReasonForLeaving } from './models/reason-for-leaving.entity';
 import { DeathCause } from './models/death-cause.entity';
 import { Vaccination } from './models/vaccination.entity';
 import { ParasiteTreatment } from './models/parasite-treatment.entity';
 import { CaptureInfo } from './models/capture-info.entity';
 import { Sterilization } from './models/sterilization.entity';
+import { Euthanasia } from './models/euthanasia.entity';
 
 export class AnimalModel {
 
@@ -22,11 +22,6 @@ export class AnimalModel {
   name: string;
 
   category: PetType;
-
-
-  district: string;
-
-  street: string;
 
   breed: CatBreed;
   sex: PetGender;
@@ -53,13 +48,19 @@ export class AnimalModel {
 
   dischargeDate: string;
 
-  euthanasiaReason: ReasonForEuthanasia;
+  euthanasia?: Euthanasia;
 
   leavingReason: ReasonForLeaving;
 
   causeDeath: DeathCause;
 
   imgSrc: string;
+
+  status: string;
+  healthStatus: string;
+  trayAccustomed: boolean;
+  walkingAccustomed: boolean;
+  attitudeTowardsAnimals: string;
 
   vaccination: Vaccination;
 

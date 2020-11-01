@@ -18,6 +18,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AnimalsAviariesComponent } from './animals-aviaries/animals-aviaries.component';
 import { AnimalSterilizationComponent } from './animal-sterilization/animal-sterilization.component';
 import { AnimalParasiteTreatmentComponent } from './animal-parasite-treatment/animal-parasite-treatment.component';
+import { AnimalVaccinationComponent } from './animal-vaccination/animal-vaccination.component';
+import { AnimalEuthanasiaComponent } from './animal-euthanasia/animal-euthanasia.component';
+import { AnimalCaptureComponent } from './animal-capture/animal-capture.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { AnimalParasiteTreatmentComponent } from './animal-parasite-treatment/an
     AnimalsDetailsComponent,
     AnimalsAviariesComponent,
     AnimalsEditComponent,
+    AnimalVaccinationComponent,
+    AnimalEuthanasiaComponent,
+    AnimalCaptureComponent,
     AnimalSterilizationComponent,
     AnimalParasiteTreatmentComponent
   ],

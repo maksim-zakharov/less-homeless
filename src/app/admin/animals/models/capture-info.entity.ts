@@ -1,3 +1,5 @@
+import { District } from './district.entity';
+
 export class CaptureInfo {
   public id: number;
 
@@ -15,4 +17,8 @@ export class CaptureInfo {
 
 
   public orderDocUrl: string;
+
+  public district: District;
+
+  public address: string;
 }

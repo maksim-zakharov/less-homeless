@@ -5,8 +5,8 @@
 }
 
 img {
-  width: 358px;
-  height: 358px;
+  width: 540px;
+  height: 360px;
   object-fit: cover;
 }
 
@@ -19,8 +19,8 @@ nz-card::ng-deep .ant-card-body {
 }
 
 nz-upload::ng-deep .ant-upload.ant-upload-select-picture-card {
-  width: 358px;
-  height: 358px;
+  width: 540px;
+  height: 360px;
 
   & > .ant-upload {
     padding: 0;

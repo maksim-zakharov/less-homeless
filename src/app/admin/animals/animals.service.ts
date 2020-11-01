@@ -121,4 +121,8 @@ export class AnimalsService {
       switchMap(() => this.cacheDocs.pipe(map(d => d.find(i => i.id === id)?.docs)))
     );
   }
+
+  getDistricts(): Observable<{ id: number, name: string }[]> {
+    return this.http.get<any>(`/api/animals/districts`);
+  }
 }

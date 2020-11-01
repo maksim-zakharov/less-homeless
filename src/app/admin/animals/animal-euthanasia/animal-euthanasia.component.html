@@ -1,0 +1,35 @@
+<h3>Сведения об эвтаназии</h3>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div nz-row [nzGutter]="24" nzType="flex" nzJustify="start">
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="date">Дата эвтаназии</nz-form-label>
+      <nz-form-control nzErrorTip="The input is not valid sterilization station Address!">
+        <nz-date-picker formControlName="date"
+                        id="date"></nz-date-picker>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="reason">Причина эвтаназии</nz-form-label>
+      <nz-form-control nzErrorTip="The input is not valid sterilization station arrival date!">
+        <input nz-input formControlName="reason" id="reason"/>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="veterinarianName">ФИО ветврача</nz-form-label>
+      <nz-form-control nzErrorTip="The input is not valid doctor fullname!">
+        <input nz-input formControlName="veterinarianName" id="veterinarianName"/>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="act">Акт эвтаназии</nz-form-label>
+      <nz-form-control nzErrorTip="The input is not valid sterilization station arrival date!">
+        <input nz-input formControlName="act" id="act"/>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button type="submit" nzType="primary">Сохранить</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
