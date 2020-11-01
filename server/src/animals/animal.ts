@@ -9,13 +9,15 @@ import { EarType } from '../entities/ear-type.entity';
 import { PetSize } from '../entities/pet-size.entity';
 import { Shelter } from '../entities/shelter.entity';
 import { Entity } from 'typeorm';
-import { ReasonForEuthanasia } from '../entities/reason-for-euthanasia.entity';
 import { ReasonForLeaving } from '../entities/reason-for-leaving.entity';
 import { DeathCause } from '../entities/death-cause.entity';
 import { Vaccination } from '../entities/vaccination.entity';
 import { ParasiteTreatment } from '../entities/parasite-treatment.entity';
 import { CaptureInfo } from '../entities/capture-info.entity';
 import { Sterilization } from '../entities/sterilization.entity';
+import { Euthanasia } from '../entities/euthanasia.entity';
+import { DisposalInfo } from '../entities/disposal-info.entity';
+import { ArrivalInfo } from '../entities/arrival-info.entity';
 
 export class NewAnimal {
   @Column({nullable: true})
@@ -24,11 +26,6 @@ export class NewAnimal {
   @ManyToOne(() => PetType)
 
   category?: PetType;
-
-  @Column({nullable: true})
-  district: string;
-  @Column({nullable: true})
-  street: string;
 
   @ManyToOne(() => CatBreed)
 
@@ -63,17 +60,45 @@ export class NewAnimal {
   specialSigns: string;
   @Column({nullable: true, unique: true})
   identificationLabel: string;
-  @ManyToOne(() => Shelter)
 
-  shelter?: Shelter;
   @Column({nullable: true})
   doctorName: string;
   @Column({nullable: true})
   dischargeDate: string;
 
-  @ManyToOne(() => ReasonForEuthanasia)
+  /**
+   * Здоров, Социализирован, Готок к пристройству, Пристроен
+   */
+  @Column({nullable: true})
+  status: string;
 
-  euthanasiaReason?: ReasonForEuthanasia;
+  /**
+   * Здоров, На лечении, Имеет хронические заболевания, Умер
+   */
+  @Column({nullable: true})
+  healthStatus: string;
+
+  /**
+   * Приучен к лотку
+   */
+  @Column()
+  trayAccustomed: boolean;
+
+  /**
+   * Приучен к лотку
+   */
+  @Column()
+  walkingAccustomed: boolean;
+
+  /**
+   * Отношение к другим животным
+   */
+  @Column({nullable: true})
+  attitudeTowardsAnimals: string;
+
+  @OneToOne(() => Euthanasia, {nullable: true, cascade: true})
+  @JoinColumn({name: 'euthanasiaId'})
+  euthanasia?: Euthanasia;
 
   @ManyToOne(() => ReasonForLeaving)
 
@@ -93,9 +118,17 @@ export class NewAnimal {
   @JoinColumn({name: 'parasiteTreatmentId'})
   parasiteTreatment?: ParasiteTreatment;
 
+  @OneToOne(() => ArrivalInfo, {nullable: true, cascade: true})
+  @JoinColumn({name: 'arrivalInfoId'})
+  arrivalInfo?: ArrivalInfo;
+
   @OneToOne(() => CaptureInfo, {nullable: true, cascade: true})
   @JoinColumn({name: 'captureInfoId'})
   captureInfo?: CaptureInfo;
+
+  @OneToOne(() => DisposalInfo, {nullable: true, cascade: true})
+  @JoinColumn({name: 'disposalInfoId'})
+  disposalInfo?: DisposalInfo;
 
   @OneToOne(() => Sterilization, {nullable: true, cascade: true})
   @JoinColumn({name: 'sterilizationId'})

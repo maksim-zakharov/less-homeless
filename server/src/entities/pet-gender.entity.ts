@@ -8,7 +8,7 @@ export class PetGender {
   public id: number;
 
   @Column()
-  public name: string
+  public name: string;
 
   @OneToMany(() => Animal, v => v.sex, {cascade: true})
   animal: Animal[];

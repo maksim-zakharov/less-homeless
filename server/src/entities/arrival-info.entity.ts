@@ -3,9 +3,10 @@ import { Animal } from '../animals/animal';
 import { Entity } from 'typeorm';
 import { District } from '../../../src/app/admin/animals/models/district.entity';
 import { ReasonForLeaving } from './reason-for-leaving.entity';
+import { Shelter } from './shelter.entity';
 
 @Entity()
-export class CaptureInfo {
+export class ArrivalInfo {
   @PrimaryGeneratedColumn()
   public id: number;
 
@@ -19,19 +20,10 @@ export class CaptureInfo {
   public captureDocUrl: string;
 
   @Column()
-  public orderId: number;
+  public employeeName: string;
 
-  @Column()
-  public orderDate: string;
-
-  @Column()
-  public orderDocUrl: string;
-
-  @Column()
-  public address: string;
-
-  @ManyToOne(() => District)
-  public district: District;
+  @ManyToOne(() => Shelter)
+  shelter?: Shelter;
 
   @OneToOne(() => Animal, {cascade: true})
   animal: Animal;

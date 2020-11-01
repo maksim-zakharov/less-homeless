@@ -1,7 +1,6 @@
-import { Column, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Entity } from 'typeorm';
 import { Animal } from '../animals/animal';
-import { Vaccination } from './vaccination.entity';
 
 @Entity()
 export class DeathCause {
