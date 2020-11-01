@@ -2,6 +2,7 @@ import { Column, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from
 import { OperOrg } from './oper-org.entity';
 import { Animal } from '../animals/animal';
 import { Entity } from 'typeorm';
+import { ArrivalInfo } from './arrival-info.entity';
 
 @Entity()
 export class Shelter {
@@ -19,6 +20,6 @@ export class Shelter {
 
   public subjection: OperOrg;
 
-  @OneToMany(() => Animal, v => v.shelter, {cascade: true})
-  animal: Animal[];
+  @OneToMany(() => ArrivalInfo, v => v.shelter, {cascade: true})
+  arrivalInfo: ArrivalInfo[];
 }

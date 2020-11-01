@@ -1,5 +1,4 @@
-import { Column, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Animal } from '../animals/animal';
+import { Column, PrimaryGeneratedColumn } from 'typeorm';
 import { Entity } from 'typeorm';
 
 @Entity()
