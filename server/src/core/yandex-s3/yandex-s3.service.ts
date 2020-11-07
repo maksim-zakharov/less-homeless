@@ -16,6 +16,11 @@ export class YandexS3Service {
       Bucket: process.env.YANDEX_S3_BUCKET,
       debug: process.env.YANDEX_S3_DEBUG
     });
+
+    console.log(JSON.stringify(this.s3.default_params.auth));
+    console.log(JSON.stringify(this.s3.s3.config.credentials));
+    console.log(JSON.stringify(this.s3.s3.config.accessKeyId));
+    console.log(JSON.stringify(this.s3.s3.config.secretAccessKey));
   }
 
   upload(buffer: File, name: string, path: string): Promise<boolean> | Promise<any> {

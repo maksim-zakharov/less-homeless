@@ -14,7 +14,8 @@ import { ConfigModule } from '@nestjs/config';
     AngularUniversalModule.forRoot({
       viewsPath: join(process.cwd(), 'dist/browser'),
       bundle: require('../server/main'),
-      liveReload: false
+      liveReload: false,
+      cache: true
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',

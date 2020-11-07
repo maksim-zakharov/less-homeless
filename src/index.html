@@ -6,44 +6,8 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <style>
-    #welcome {
-      z-index: -1;
-      color: #333333;
-      font-family: "MCW XX";
-      font-weight: 500;
-      font-size: 36px;
-      line-height: 40px;
-      position: absolute;
-      width: 100%;
-      height: 100vh;
-      vertical-align: middle;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  </style>
 </head>
-<body class="device-desktop locale-ru sb-l-o sb-r-c onload-check">
-<h1 id="welcome">
-  <script>
-    const currentTime = new Date();
-    const currentHour = currentTime.getHours();
-    let welcomeText = '';
-
-    if (currentHour >= 6) {
-      welcomeText = 'Доброе утро!';
-    }
-    if (currentHour >= 12) {
-      welcomeText = 'Добрый день!';
-    }
-    if (currentHour > 18 || currentHour < 6) {
-      welcomeText = 'Добрый вечер!';
-    }
-
-    document.getElementById('welcome').innerText = welcomeText;
-  </script>
-</h1>
+<body>
 <app-root></app-root>
 </body>
 </html>

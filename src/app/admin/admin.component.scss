@@ -1,14 +1,14 @@
 @import "~ng-zorro-antd/ng-zorro-antd.min.css";
 
-:host {
-  display: flex;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  flex-direction: column;
-  max-width: 1600px;
-  margin: 0 auto;
-}
+//:host {
+//  display: flex;
+//  text-rendering: optimizeLegibility;
+//  -webkit-font-smoothing: antialiased;
+//  -moz-osx-font-smoothing: grayscale;
+//  flex-direction: column;
+//  max-width: 1600px;
+//  margin: 0 auto;
+//}
 
 //.app-layout {
 //  height: 100vh;
@@ -81,7 +81,7 @@ nz-content {
 }
 
 .inner-content {
-  padding: 0 0 0 32px;
+  padding: 14px 30px 30px;
   background: #f3f5f7;
   height: 100%;
 }

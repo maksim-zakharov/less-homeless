@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
-import { NzLayoutModule, NzMenuModule } from 'ng-zorro-antd';
+import { NzIconModule, NzLayoutModule, NzMenuModule } from 'ng-zorro-antd';
 
 const routes: Routes = [
   {
@@ -38,7 +38,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CommonModule,
     NzLayoutModule,
-    NzMenuModule
+    NzMenuModule,
+    NzIconModule
   ]
 })
 export class AdminModule {

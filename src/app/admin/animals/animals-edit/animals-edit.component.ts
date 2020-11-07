@@ -17,7 +17,7 @@ import {
 } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NzMessageService, NzUploadFile } from 'ng-zorro-antd';
+import { NzMessageService, NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd';
 import { AnimalModel } from '../animal.model';
 
 @Component({
@@ -86,6 +86,11 @@ export class AnimalsEditComponent implements OnInit {
   death$ = this.ordersService.getCauseDeath();
   leave$ = this.ordersService.getLeavingReason();
 
+  docs$ = this.animalId$.pipe(
+    switchMap(id => this.ordersService.getAnimalDocsById(id)),
+    shareReplay(1)
+  );
+
   submitForm(): void {
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
@@ -152,5 +157,25 @@ export class AnimalsEditComponent implements OnInit {
     const reader = new FileReader();
     reader.addEventListener('load', () => callback(reader.result!.toString()));
     reader.readAsDataURL(img);
+  }
+
+  handleChange({file, fileList}: NzUploadChangeParam): void {
+    const status = file.status;
+    if (status !== 'uploading') {
+      const newDoc = {
+        url: `https://less-homeless.storage.yandexcloud.net/${file.response.Key}`,
+        createDate: file.lastModifiedDate,
+        name: file.name
+      };
+
+      const id = file.response.Key.replace('docs/', '').split('/')[0];
+
+      this.ordersService.addDocsToCache(id, newDoc);
+    }
+    if (status === 'done') {
+      this.msg.success(`${file.name} file uploaded successfully.`);
+    } else if (status === 'error') {
+      this.msg.error(`${file.name} file upload failed.`);
+    }
   }
 }

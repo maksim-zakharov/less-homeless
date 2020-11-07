@@ -9,7 +9,7 @@
 <nz-card>
   <h1>
     Журнал движения животных
-    <a nz-button routerLink="../new">Новая заявка</a>
+    <a nz-button routerLink="../new" nzType="primary">Новая заявка</a>
   </h1>
   <nz-table #basicTable [nzData]="orders$ | async">
     <thead>
