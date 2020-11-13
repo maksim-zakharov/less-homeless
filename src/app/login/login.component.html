@@ -1,74 +1,19 @@
-<div id="main" class="animated">
-
-  <section id="content_wrapper">
-
-    <section id="content">
-
-      <div class="system-header">
-        <div class="system-logo">
-          <a href="https://www.mos.ru/"><img src="assets/mos.ru/system-logo.png" alt="mos.ru" title="mos.ru"></a>
-        </div>
-        <h1 class="system-name">Доступ к&nbsp;информационным ресурсам города Москвы</h1>
-      </div>
-
-
-      <div class="form-wrapper">
-
-
-        <h1 class="page-title">
-          Вход на<span class="app-name">            <strong> Официальный сайт Мэра Москвы</strong>
-        </span>
-        </h1>
-        <div class="lock-ib show">
-        </div>
-        <form id="loginFm" role="form" [formGroup]="form" (ngSubmit)="submit()" class="form-vertical bc-form-passwordMethod">
-          <input type="hidden" name="isDelayed" value="false">
-
-          <div id="loginDv" class="auth-login">
-
-            <div class="form-group">
-              <label for="login" class="control-label">
-                Логин (телефон, email или СНИЛС)
-              </label>
-              <div class="form-input">
-                <input id="login" name="login" type="text" tabindex="2" class="form-control"
-                       formControlName="login"
-                       placeholder="Логин (телефон, email или СНИЛС)" data-parsley-required="true"
-                       data-parsley-maxlength="64" data-parsley-trim-value="true"
-                       data-parsley-required-message="Введите логин" data-parsley-id="4">
-
-              </div>
-            </div>
-
-          </div>
-
-
-          <div class="form-group">
-            <label for="password" class="control-label">
-              Пароль
-            </label>
-            <div class="form-input posr">
-              <input id="password" name="password" type="password" tabindex="3" autofocus="" class="form-control"
-                     formControlName="password"
-                     value="" placeholder="Введите пароль" data-parsley-required="true"
-                     data-parsley-required-message="Введите пароль" data-parsley-id="6">
-
-            </div>
-          </div>
-
-
-          <button id="bind" type="submit" tabindex="5" class="btn btn-lg btn-primary btn-block bc-form-btn">
-
-            Войти
-
-          </button>
-        </form>
-
-
-      </div><!-- end .form-wrapper -->
-
-    </section><!-- end #content -->
-
-  </section><!-- end #content_wrapper -->
-
-</div>
+<nz-card>
+  <h1>Вход</h1>
+  <form id="loginFm" nz-form role="form" [formGroup]="form" (ngSubmit)="submit()">
+    <nz-form-item>
+      <nz-form-control>
+        <input nz-input nzSize="large" id="login" name="login" type="text" tabindex="2"
+               formControlName="login"
+               placeholder="Логин (телефон, email)">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <input nz-input nzSize="large" id="password" name="password" type="password" tabindex="3" autofocus=""
+               formControlName="password" placeholder="Введите пароль">
+      </nz-form-control>
+    </nz-form-item>
+    <button nz-button nzSize="large" type="submit" nzType="primary">Войти</button>
+  </form>
+</nz-card>

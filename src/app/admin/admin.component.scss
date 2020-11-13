@@ -10,9 +10,14 @@
 //  margin: 0 auto;
 //}
 
-//.app-layout {
-//  height: 100vh;
-//}
+.app-layout {
+  position: fixed;
+  width: 100%;
+
+  nz-layout {
+    height: 100vh;
+  }
+}
 
 .menu-sidebar {
   position: relative;
@@ -86,6 +91,27 @@ nz-content {
   height: 100%;
 }
 
+.avatar-wrapper {
+  display: flex;
+  align-items: center;
+
+  nz-avatar {
+    margin-right: 10px;
+  }
+}
+
 nz-header.ant-layout-header {
-  padding: 0 !important;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+h1 {
+  padding: 0 24px;
+  margin: 0;
+  height: 60px;
+  line-height: 60px;
+  color: #fff;
 }

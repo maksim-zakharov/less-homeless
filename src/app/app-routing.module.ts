@@ -20,7 +20,7 @@ const routes: Routes = [
         path: 'market', loadChildren: () => import('./market/market.module').then(m => m.MarketModule)
       },
       {
-        path: '**', redirectTo: 'market'
+        path: '**', redirectTo: 'admin'
       }
     ]
   }

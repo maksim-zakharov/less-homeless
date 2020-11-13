@@ -1,7 +1,23 @@
-#content_wrapper {
-  background-color: #fff;
+:host {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  background-color: #eee;
 }
 
-#main {
-  box-shadow: none;
+nz-card {
+  width: 400px;
+
+  &::ng-deep .ant-card-body {
+    padding: 60px 40px;
+  }
+}
+
+h1 {
+  text-align: center;
+}
+
+button {
+  width: 100%;
 }

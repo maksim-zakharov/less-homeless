@@ -19,7 +19,7 @@
 <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
   <nz-tabset>
     <nz-tab nzTitle="Общие сведения">
-      <nz-card [nzExtra]="extraTemplate">
+      <nz-card [nzExtra]="readonly ? extraTemplate : null">
         <div nz-row [nzGutter]="24" nzType="flex" nzJustify="start">
           <!-- TODO айдишник нужно где-то найти, придется сначала получать айдишник, потом фотку хранить -->
           <div nz-col nzSpan="12">
@@ -36,7 +36,8 @@
                 <i class="upload-icon" *ngIf="!readonly" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
                 <div *ngIf="!readonly" class="ant-upload-text">Перетащите
                   или выберите файл
-                  на компьютере</div>
+                  на компьютере
+                </div>
               </ng-container>
               <img *ngIf="avatarUrl" [src]="avatarUrl"/>
             </nz-upload>
@@ -45,7 +46,8 @@
             <nz-form-item>
               <nz-form-label [nzRequired]="!readonly" nzFor="name">Кличка животного</nz-form-label>
               <nz-form-control nzErrorTip="The input is not valid name!">
-                <input nz-input formControlName="name" id="name" [attr.disabled]="readonly? true : null" [readonly]="readonly"/>
+                <input nz-input formControlName="name" id="name" [attr.disabled]="readonly? true : null"
+                       [readonly]="readonly"/>
               </nz-form-control>
             </nz-form-item>
             <nz-form-item>
@@ -67,93 +69,100 @@
             <nz-form-item>
               <nz-form-label [nzRequired]="!readonly" nzFor="birthDate">Дата рождения</nz-form-label>
               <nz-form-control nzErrorTip="The input is not valid birth year!">
-                <nz-date-picker nzMode="month" formControlName="birthDate" [nzDisabled]="readonly" id="birthDate"></nz-date-picker>
+                <nz-date-picker nzMode="month" formControlName="birthDate" [nzDisabled]="readonly"
+                                id="birthDate"></nz-date-picker>
               </nz-form-control>
             </nz-form-item>
           </div>
-
-          <h3>Внешний вид</h3>
-          <div nz-row [nzGutter]="24" nzType="flex" nzJustify="start">
-            <nz-form-item>
-              <nz-form-label [nzRequired]="!readonly" nzFor="breed">Порода</nz-form-label>
-              <nz-form-control nzErrorTip="The input is not valid breed!">
-                <nz-select nzShowSearch formControlName="breed" id="breed" [nzDisabled]="readonly">
-                  <nz-option [nzValue]="breed" [nzLabel]="breed.name" *ngFor="let breed of breeds$ | async"></nz-option>
-                </nz-select>
-              </nz-form-control>
-            </nz-form-item>
-            <nz-form-item>
-              <nz-form-label [nzRequired]="!readonly" nzFor="ears">Уши</nz-form-label>
-              <nz-form-control nzErrorTip="The input is not valid ears!">
-                <nz-select nzShowSearch formControlName="ears" id="ears" [nzDisabled]="readonly">
-                  <nz-option [nzValue]="breed" [nzLabel]="breed.name"
-                             *ngFor="let breed of earTypes$ | async"></nz-option>
-                </nz-select>
-              </nz-form-control>
-            </nz-form-item>
-            <nz-form-item>
-              <nz-form-label [nzRequired]="!readonly" nzFor="color">Окрас</nz-form-label>
-              <nz-form-control nzErrorTip="The input is not valid color!">
-                <nz-select nzShowSearch formControlName="color" id="color" [nzDisabled]="readonly">
-                  <nz-option [nzValue]="breed" [nzLabel]="breed.name"
-                             *ngFor="let breed of catColors$ | async"></nz-option>
-                </nz-select>
-              </nz-form-control>
-            </nz-form-item>
-            <nz-form-item>
-              <nz-form-label [nzRequired]="!readonly" nzFor="tail">Хвост</nz-form-label>
-              <nz-form-control nzErrorTip="The input is not valid tail!">
-                <nz-select nzShowSearch formControlName="tail" id="tail" [nzDisabled]="readonly">
-                  <nz-option [nzValue]="breed" [nzLabel]="breed.name"
-                             *ngFor="let breed of tailTypes$ | async"></nz-option>
-                </nz-select>
-              </nz-form-control>
-            </nz-form-item>
-            <nz-form-item>
-              <nz-form-label [nzRequired]="!readonly" nzFor="wool">Шерсть</nz-form-label>
-              <nz-form-control nzErrorTip="The input is not valid wool!">
-                <nz-select nzShowSearch formControlName="wool" id="wool" [nzDisabled]="readonly">
-                  <nz-option [nzValue]="breed" [nzLabel]="breed.name"
-                             *ngFor="let breed of catFurs$ | async"></nz-option>
-                </nz-select>
-              </nz-form-control>
-            </nz-form-item>
-            <nz-form-item>
-              <nz-form-label [nzRequired]="!readonly" nzFor="specialSigns">Особые приметы</nz-form-label>
-              <nz-form-control nzErrorTip="The input is not valid special signs!">
-                <textarea nz-input formControlName="specialSigns" id="specialSigns" [attr.disabled]="readonly? true : null" [readonly]="readonly"></textarea>
-              </nz-form-control>
-            </nz-form-item>
-            <nz-form-item>
-              <nz-form-label [nzRequired]="!readonly" nzFor="identificationLabel">Идентификационная метка (способ и место нанесения)
-              </nz-form-label>
-              <nz-form-control nzErrorTip="The input is not valid identification label!">
-                <input nz-input formControlName="identificationLabel" id="identificationLabel" [attr.disabled]="readonly? true : null" [readonly]="readonly"/>
-              </nz-form-control>
-            </nz-form-item>
+          <div style="padding: 0 12px;">
+            <h3>Внешний вид</h3>
+            <div nz-row [nzGutter]="24" nzType="flex" nzJustify="start">
+              <nz-form-item>
+                <nz-form-label [nzRequired]="!readonly" nzFor="breed">Порода</nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid breed!">
+                  <nz-select nzShowSearch formControlName="breed" id="breed" [nzDisabled]="readonly">
+                    <nz-option [nzValue]="breed" [nzLabel]="breed.name"
+                               *ngFor="let breed of breeds$ | async"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label [nzRequired]="!readonly" nzFor="ears">Уши</nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid ears!">
+                  <nz-select nzShowSearch formControlName="ears" id="ears" [nzDisabled]="readonly">
+                    <nz-option [nzValue]="breed" [nzLabel]="breed.name"
+                               *ngFor="let breed of earTypes$ | async"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label [nzRequired]="!readonly" nzFor="color">Окрас</nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid color!">
+                  <nz-select nzShowSearch formControlName="color" id="color" [nzDisabled]="readonly">
+                    <nz-option [nzValue]="breed" [nzLabel]="breed.name"
+                               *ngFor="let breed of catColors$ | async"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label [nzRequired]="!readonly" nzFor="tail">Хвост</nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid tail!">
+                  <nz-select nzShowSearch formControlName="tail" id="tail" [nzDisabled]="readonly">
+                    <nz-option [nzValue]="breed" [nzLabel]="breed.name"
+                               *ngFor="let breed of tailTypes$ | async"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label [nzRequired]="!readonly" nzFor="wool">Шерсть</nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid wool!">
+                  <nz-select nzShowSearch formControlName="wool" id="wool" [nzDisabled]="readonly">
+                    <nz-option [nzValue]="breed" [nzLabel]="breed.name"
+                               *ngFor="let breed of catFurs$ | async"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label [nzRequired]="!readonly" nzFor="specialSigns">Особые приметы</nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid special signs!">
+                  <textarea nz-input formControlName="specialSigns" id="specialSigns"
+                            [attr.disabled]="readonly? true : null" [readonly]="readonly"></textarea>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label [nzRequired]="!readonly" nzFor="identificationLabel">Идентификационная метка (способ и
+                  место нанесения)
+                </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid identification label!">
+                  <input nz-input formControlName="identificationLabel" id="identificationLabel"
+                         [attr.disabled]="readonly? true : null" [readonly]="readonly"/>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-row [nzGutter]="24" nzType="flex" nzJustify="start">
+              <nz-form-item>
+                <nz-form-label [nzRequired]="!readonly" nzFor="leavingReason">Причина выбытия (передача владельцу,
+                  смерть или
+                  иное,
+                  написать)
+                </nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid animal left reason!">
+                  <nz-select nzShowSearch formControlName="leavingReason" id="leavingReason" [nzDisabled]="readonly">
+                    <nz-option [nzValue]="breed" [nzLabel]="breed.name"
+                               *ngFor="let breed of leave$ | async"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <button nz-button nzType="primary" type="submit" *ngIf="!readonly">{{submitText$ | async}}</button>
           </div>
         </div>
-        <!--    <nz-divider></nz-divider>-->
-        <nz-form-item>
-          <nz-form-label [nzRequired]="!readonly" nzFor="leavingReason">Причина выбытия (передача владельцу, смерть или иное,
-            написать)
-          </nz-form-label>
-          <nz-form-control nzErrorTip="The input is not valid animal left reason!">
-            <nz-select nzShowSearch formControlName="leavingReason" id="leavingReason" [nzDisabled]="readonly">
-              <nz-option [nzValue]="breed" [nzLabel]="breed.name" *ngFor="let breed of leave$ | async"></nz-option>
-            </nz-select>
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item *ngIf="!readonly">
-          <nz-form-control>
-            <button nz-button nzType="primary">{{submitText$ | async}}</button>
-          </nz-form-control>
-        </nz-form-item>
       </nz-card>
     </nz-tab>
     <nz-tab nzTitle="Здоровье животного">
       <nz-card>
-        <app-animal-sterilization (onSubmit)="submitForm()" [disabled]="readonly" formControlName="sterilization"></app-animal-sterilization>
+        <app-animal-sterilization (onSubmit)="submitForm()" [disabled]="readonly"
+                                  formControlName="sterilization"></app-animal-sterilization>
         <nz-divider></nz-divider>
         <h3>Сведения о состоянии здоровья</h3>
         <div nz-row [nzGutter]="24" nzType="flex" nzJustify="start">
@@ -161,7 +170,8 @@
             <nz-form-label [nzRequired]="!readonly" nzFor="dischargeDate">Дата выписки животного из стерилизации
             </nz-form-label>
             <nz-form-control nzErrorTip="The input is not valid discharge date!">
-              <nz-date-picker formControlName="dischargeDate" [nzDisabled]="readonly" id="dischargeDate"></nz-date-picker>
+              <nz-date-picker formControlName="dischargeDate" [nzDisabled]="readonly"
+                              id="dischargeDate"></nz-date-picker>
             </nz-form-control>
           </nz-form-item>
         </div>
@@ -169,9 +179,11 @@
         <app-animal-parasite-treatment (onSubmit)="submitForm()" [disabled]="readonly"
                                        formControlName="parasiteTreatment"></app-animal-parasite-treatment>
         <nz-divider></nz-divider>
-        <app-animal-vaccination (onSubmit)="submitForm()" formControlName="vaccination" [disabled]="readonly"></app-animal-vaccination>
+        <app-animal-vaccination (onSubmit)="submitForm()" formControlName="vaccination"
+                                [disabled]="readonly"></app-animal-vaccination>
         <nz-divider></nz-divider>
-        <app-animal-euthanasia (onSubmit)="submitForm()" formControlName="euthanasia" [disabled]="readonly"></app-animal-euthanasia>
+        <app-animal-euthanasia (onSubmit)="submitForm()" formControlName="euthanasia"
+                               [disabled]="readonly"></app-animal-euthanasia>
         <nz-divider></nz-divider>
         <h3>Текущее состояние здоровья</h3>
         <div nz-row [nzGutter]="24" nzType="flex" nzJustify="start">
@@ -190,13 +202,15 @@
     </nz-tab>
     <nz-tab nzTitle="Движение животного">
       <nz-card>
-        <app-animal-capture (onSubmit)="submitForm()" formControlName="captureInfo" [disabled]="readonly"></app-animal-capture>
+        <app-animal-capture (onSubmit)="submitForm()" formControlName="captureInfo"
+                            [disabled]="readonly"></app-animal-capture>
         <nz-divider></nz-divider>
-        <app-animal-arrival (onSubmit)="submitForm()" formControlName="arrivalInfo" [disabled]="readonly"></app-animal-arrival>
-        <nz-divider></nz-divider>
-        <h3>Сведения о выбытии животного</h3>
-        <div nz-row [nzGutter]="24" nzType="flex" nzJustify="start">
-        </div>
+        <app-animal-arrival (onSubmit)="submitForm()" formControlName="arrivalInfo"
+                            [disabled]="readonly"></app-animal-arrival>
+        <!--        <nz-divider></nz-divider>-->
+        <!--        <h3>Сведения о выбытии животного</h3>-->
+        <!--        <div nz-row [nzGutter]="24" nzType="flex" nzJustify="start">-->
+        <!--        </div>-->
       </nz-card>
     </nz-tab>
   </nz-tabset>

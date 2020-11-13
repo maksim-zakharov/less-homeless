@@ -32,9 +32,5 @@
       </nz-form-control>
     </nz-form-item>
   </div>
-  <nz-form-item *ngIf="!disabled">
-    <nz-form-control>
-      <button nz-button type="submit" nzType="primary">Сохранить</button>
-    </nz-form-control>
-  </nz-form-item>
+  <button nz-button type="submit" *ngIf="!disabled" nzType="primary">Сохранить</button>
 </form>

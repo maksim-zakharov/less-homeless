@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NzButtonModule, NzCardModule, NzFormModule, NzInputModule } from 'ng-zorro-antd';
 
 const routes: Routes = [
   {
@@ -14,7 +15,11 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NzInputModule,
+    NzFormModule,
+    NzCardModule,
+    NzButtonModule
   ]
 })
 export class LoginModule { }
