@@ -6,6 +6,7 @@ import { AnimalsModule } from './src/animals/animals.module';
 import { CoreModule } from './src/core/core.module';
 import { AuthModule } from './src/auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { YandexMapsApiModule } from './src/yandex-maps-api/yandex-maps-api.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { ConfigModule } from '@nestjs/config';
       autoLoadEntities: true,
       synchronize: true
     }),
+    YandexMapsApiModule,
     AnimalsModule,
     AuthModule
   ]

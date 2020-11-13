@@ -1,4 +1,4 @@
-import { Controller, Post, UseGuards, Request, Get } from '@nestjs/common';
+import { Controller, Post, UseGuards, Request, Get, Body } from '@nestjs/common';
 import { LocalAuthGuard } from './local-auth.guard';
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
@@ -17,9 +17,21 @@ export class AuthController {
   }
 
   @ApiExcludeEndpoint()
+  @Post('register')
+  async register(@Body() registrationData): Promise<any> {
+    return this.authService.register(registrationData);
+  }
+
+  @ApiExcludeEndpoint()
+  @Post('register-shelter')
+  async registerShelter(@Body() registrationData): Promise<any> {
+    return this.authService.registerShelter(registrationData);
+  }
+
+  @ApiExcludeEndpoint()
   @UseGuards(JwtAuthGuard)
   @Get('profile')
-  getProfile(@Request() req) {
+  getProfile(@Request() req): any {
     return req.user;
   }
 }

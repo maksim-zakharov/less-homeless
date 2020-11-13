@@ -1,0 +1,34 @@
+<nz-card>
+  <h1>Регистрация</h1>
+  <form id="loginFm" nz-form role="form" [formGroup]="form" (ngSubmit)="submit()">
+    <nz-form-item>
+      <nz-form-control>
+        <input nz-input nzSize="large" id="firstName" name="firstName" type="text" tabindex="2"
+               formControlName="firstName"
+               placeholder="Введите имя">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <input nz-input nzSize="large" id="lastName" name="lastName" type="text" tabindex="2"
+               formControlName="lastName"
+               placeholder="Введите фамилию">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <input nz-input nzSize="large" id="email" name="email" type="text" tabindex="2"
+               formControlName="email"
+               placeholder="Логин (телефон, email)">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <input nz-input nzSize="large" id="password" name="password" type="password" tabindex="3" autofocus=""
+               formControlName="password" placeholder="Введите пароль">
+      </nz-form-control>
+    </nz-form-item>
+
+    <button nz-button nzSize="large" type="submit" nzType="primary" [disabled]="form.invalid">Зарегистрироваться</button>
+  </form>
+</nz-card>

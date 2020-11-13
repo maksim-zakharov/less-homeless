@@ -41,6 +41,20 @@ export class AuthService {
     );
   }
 
+  register(firstName: string, lastName: string, login: string, password: string): Observable<any> {
+    return this.http.post('/api/auth/register', {email: login, name: `${firstName} ${lastName}`, password}).pipe(
+      flatMap(user => this.updateSession(user)),
+      flatMap(() => this.redirectIfNeed())
+    );
+  }
+
+  registerShelter(firstName: string, lastName: string, login: string, password: string, shelterName: string, shelterAddress: string): Observable<any> {
+    return this.http.post('/api/auth/register-shelter', {email: login, name: `${firstName} ${lastName}`, password, shelterName, shelterAddress}).pipe(
+      flatMap(user => this.updateSession(user)),
+      flatMap(() => this.redirectIfNeed())
+    );
+  }
+
   private redirectIfNeed() {
     const url = this.activatedRoute.snapshot.queryParamMap.get('redirectUrl');
     if (url) {

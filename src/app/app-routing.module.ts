@@ -8,6 +8,12 @@ const routes: Routes = [
     path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
   },
   {
+    path: 'register', loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
+  },
+  {
+    path: 'register-shelter', loadChildren: () => import('./register-shelter/register-shelter.module').then(m => m.RegisterShelterModule)
+  },
+  {
     path: '',
     component: LayoutComponent,
     canActivate: [InitializationGuard],

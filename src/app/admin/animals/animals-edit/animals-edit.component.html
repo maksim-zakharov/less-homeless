@@ -16,7 +16,7 @@
   <a *ngIf="readonly" routerLink="../{{animalId$ | async}}/edit">Редактировать</a>
 </ng-template>
 
-<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" class="inline-form">
   <nz-tabset>
     <nz-tab nzTitle="Общие сведения">
       <nz-card [nzExtra]="readonly ? extraTemplate : null">

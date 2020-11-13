@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login.component';
+import { RegisterShelterComponent } from './register-shelter.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NzButtonModule, NzCardModule, NzDividerModule, NzFormModule, NzInputModule } from 'ng-zorro-antd';
+import { NzAutocompleteModule, NzButtonModule, NzCardModule, NzDividerModule, NzFormModule, NzInputModule } from 'ng-zorro-antd';
 
 const routes: Routes = [
   {
-    path: '', component: LoginComponent
+    path: '', component: RegisterShelterComponent
   }
 ];
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [RegisterShelterComponent],
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
@@ -20,7 +20,8 @@ const routes: Routes = [
     NzFormModule,
     NzCardModule,
     NzButtonModule,
-    NzDividerModule
+    NzDividerModule,
+    NzAutocompleteModule
   ]
 })
-export class LoginModule { }
+export class RegisterShelterModule { }

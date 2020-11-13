@@ -1,0 +1,54 @@
+<nz-card>
+  <h1>Регистрация приюта</h1>
+  <form id="loginFm" nz-form role="form" [formGroup]="form" (ngSubmit)="submit()">
+    <nz-form-item>
+      <nz-form-control>
+        <input nz-input nzSize="large" id="firstName" name="firstName" type="text" tabindex="2"
+               formControlName="firstName"
+               placeholder="Введите имя">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <input nz-input nzSize="large" id="lastName" name="lastName" type="text" tabindex="2"
+               formControlName="lastName"
+               placeholder="Введите фамилию">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <input nz-input nzSize="large" id="shelterName" name="shelterName" type="text" tabindex="2"
+               formControlName="shelterName"
+               placeholder="Название приюта">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <input nz-input nzSize="large" id="shelterAddress" name="shelterAddress" type="text" tabindex="2"
+               formControlName="shelterAddress"
+               placeholder="Адрес приюта" (input)="onInput($event)" [nzAutocomplete]="auto">
+        <nz-autocomplete #auto>
+          <nz-auto-option *ngFor="let option of options$ | async" [nzLabel]="option.fullAddress" [nzValue]="option.fullAddress">
+            {{ option.fullAddress }}
+            <span class="certain-search-item-count">{{ option.country }}</span>
+          </nz-auto-option>
+        </nz-autocomplete>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <input nz-input nzSize="large" id="email" name="email" type="text" tabindex="2"
+               formControlName="email"
+               placeholder="Логин (телефон, email)">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <input nz-input nzSize="large" id="password" name="password" type="password" tabindex="3" autofocus=""
+               formControlName="password" placeholder="Введите пароль">
+      </nz-form-control>
+    </nz-form-item>
+
+    <button nz-button nzSize="large" type="submit" nzType="primary" [disabled]="form.invalid">Зарегистрировать приют</button>
+  </form>
+</nz-card>

@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { HttpModule, Module } from '@nestjs/common';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { UsersService } from '../users/users.service';
@@ -12,6 +12,7 @@ import { jwtConstants } from './constants';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User]), PassportModule.register({defaultStrategy: 'jwt'}),
+    HttpModule,
     JwtModule.register({
       secret: jwtConstants.secret,
       signOptions: {expiresIn: '900s'},

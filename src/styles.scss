@@ -2,7 +2,7 @@
   margin-bottom: 12px;
 }
 
-.ant-form-item {
+.inline-form .ant-form-item {
   display: flex;
   flex-direction: column;
   align-items: baseline;
@@ -13,7 +13,7 @@
   min-width: 180px;
 }
 
-form {
+form.inline-form {
   button[type="submit"] {
     margin-top: 16px;
   }
