@@ -27,6 +27,7 @@ import { Euthanasia } from '../entities/euthanasia.entity';
 import { ArrivalInfo } from '../entities/arrival-info.entity';
 import { DisposalInfo } from '../entities/disposal-info.entity';
 import { District } from '../entities/district.entity';
+import { CrudService } from '../core/crud/crud.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([
@@ -35,7 +36,7 @@ import { District } from '../entities/district.entity';
     ReasonForLeaving, Euthanasia, Shelter, TailType, Vaccination, ParasiteTreatment
   ])],
   controllers: [AnimalsController],
-  providers: [AnimalsService, YandexS3Service]
+  providers: [AnimalsService, YandexS3Service, CrudService]
 })
 export class AnimalsModule {
 }

@@ -3,12 +3,16 @@ import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
 import * as bcrypt from 'bcryptjs';
 import { PostgresErrorCode } from '../../postgresErrorCodes.enum';
+import { Connection } from 'typeorm';
+import { Shelter } from '../entities/shelter.entity';
+import { User } from '../users/user.entity';
 
 @Injectable()
 export class AuthService {
   private saltRounds = 10;
 
   constructor(
+    private connection: Connection,
     private usersService: UsersService,
     private jwtService: JwtService
   ) {
@@ -33,12 +37,31 @@ export class AuthService {
   }
 
   public async registerShelter(registrationData): Promise<any> {
+    const queryRunner = this.connection.createQueryRunner();
+
+    // establish real database connection using our new query runner
+    await queryRunner.connect();
+    const shelter = await queryRunner.manager.create(Shelter, {phone: '', ...registrationData.shelter});
+
     const hashedPassword = await bcrypt.hash(registrationData.password, 10);
     try {
-      const createdUser = await this.usersService.create({
+      const createdUser = queryRunner.manager.create(User, {
         ...registrationData,
         password: hashedPassword
       });
+
+      createdUser.shelter = shelter;
+
+      await queryRunner.startTransaction();
+      // execute some operations on this transaction:
+      await queryRunner.manager.save(shelter);
+      await queryRunner.manager.save(createdUser);
+
+      // commit transaction now:
+      await queryRunner.commitTransaction();
+      // you need to release query runner which is manually created:
+      await queryRunner.release();
+
       createdUser.password = undefined;
 
       return this.login(createdUser);
@@ -90,10 +113,10 @@ export class AuthService {
     return bcrypt.compare(password, hash);
   }
 
-  login(user: any): any {
-    const payload = {name: user.name, id: user.id};
+  login(user: User): any {
+    const {password, ...userWithoutPassword} = user;
     return {
-      access_token: this.jwtService.sign(payload),
+      access_token: this.jwtService.sign(userWithoutPassword),
     };
   }
 }

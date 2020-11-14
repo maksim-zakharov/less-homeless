@@ -28,8 +28,8 @@
                formControlName="shelterAddress"
                placeholder="Адрес приюта" (input)="onInput($event)" [nzAutocomplete]="auto">
         <nz-autocomplete #auto>
-          <nz-auto-option *ngFor="let option of options$ | async" [nzLabel]="option.fullAddress" [nzValue]="option.fullAddress">
-            {{ option.fullAddress }}
+          <nz-auto-option *ngFor="let option of options$ | async" [nzLabel]="option.address" [nzValue]="option">
+            {{ option.address }}
             <span class="certain-search-item-count">{{ option.country }}</span>
           </nz-auto-option>
         </nz-autocomplete>

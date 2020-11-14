@@ -20,14 +20,6 @@
         <input nz-input formControlName="employeeName" id="employeeName" [attr.disabled]="disabled? true : null" [readonly]="disabled"/>
       </nz-form-control>
     </nz-form-item>
-    <nz-form-item>
-      <nz-form-label [nzRequired]="!disabled" nzFor="shelter">Наименование приюта</nz-form-label>
-      <nz-form-control nzErrorTip="The input is not valid shelter name!">
-        <nz-select nzShowSearch formControlName="shelter" id="shelter" [nzDisabled]="disabled">
-          <nz-option [nzValue]="breed" [nzLabel]="breed.name" *ngFor="let breed of shelters$ | async"></nz-option>
-        </nz-select>
-      </nz-form-control>
-    </nz-form-item>
   </div>
   <button nz-button type="submit" nzType="primary" *ngIf="!disabled">Сохранить</button>
 </form>

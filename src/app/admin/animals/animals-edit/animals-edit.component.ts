@@ -75,15 +75,9 @@ export class AnimalsEditComponent implements OnInit {
   shelters$ = this.ordersService.getShelters();
   petSizes$ = this.ordersService.getPetSizes();
   earTypes$ = this.ordersService.getEarTypes();
-  dogFurs$ = this.ordersService.getDogFurs();
   catFurs$ = this.ordersService.getCatFurs();
-  dogColors$ = this.ordersService.getDogColors();
   catColors$ = this.ordersService.getCatColors();
   petGenders$ = this.ordersService.getPetGenders();
-  dogBreeds$ = this.ordersService.getDogBreeds();
-  catBreeds$ = this.ordersService.getCatBreeds();
-  euth$ = this.ordersService.getEuthanasiaReasons();
-  death$ = this.ordersService.getCauseDeath();
   leave$ = this.ordersService.getLeavingReason();
 
   docs$ = this.animalId$.pipe(

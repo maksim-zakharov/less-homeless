@@ -1,107 +1,111 @@
-<nz-breadcrumb>
-  <nz-breadcrumb-item>
-    Главная
-  </nz-breadcrumb-item>
-  <nz-breadcrumb-item>
-    Журнал движения животных
-  </nz-breadcrumb-item>
-</nz-breadcrumb>
-<nz-card>
-  <h1>
-    Журнал движения животных
-    <a nz-button routerLink="../new" nzType="primary">Новая заявка</a>
-  </h1>
-  <nz-table #basicTable [nzData]="orders$ | async">
-    <thead>
-    <tr>
-      <th>№ карточки</th>
-      <th>Дата поступления</th>
-      <th>№ чипа</th>
-      <th>Вид животного</th>
-      <!--    <th>№</th>-->
-      <!--    <th>Округ</th>-->
-      <!--    <th>Дата приема</th>-->
-      <!--    &lt;!&ndash;    Заполняется в пункте стерилизации&ndash;&gt;-->
-      <!--    <th>Акт отлова</th>-->
-      <!--    <th>Район</th>-->
-      <!--    <th>Улица</th>-->
-      <!--    <th>Порода</th>-->
-      <!--    <th>Год и месяц рождения</th>-->
-      <!--    <th>Шерсть</th>-->
-      <!--    <th>Уши</th>-->
-      <!--    <th>Хвост</th>-->
-      <!--    <th>Размер, вес</th>-->
-      <!--    <th>Особые приметы</th>-->
-      <!--    <th>Наименование пункта стерилизации</th>-->
-      <!--    <th>Адрес пункта стерилизации</th>-->
-      <!--    <th>Дата поступления в пункт стерилизации</th>-->
-      <!--    <th>Идентификационная метка (способ и место нанесения)</th>-->
-      <!--    <th>Дата стерилизации</th>-->
-      <!--    <th>ФИО врача проводившего стерилизацию</th>-->
-      <!--    <th>Дата выписки животного из стерилизации</th>-->
-      <!--    <th>ФИО руководителя стерилизации</th>-->
-      <!--    &lt;!&ndash;    Заполняется в приюте&ndash;&gt;-->
-      <!--    <th>Наименование приюта</th>-->
-      <!--    <th>Адрес приюта</th>-->
-      <!--      <th>Основания для приема в приют</th>-->
-      <th>Кличка</th>
-      <th>Пол</th>
-      <th>Возраст</th>
-      <th>Состояние здоровья</th>
-      <th>Статус</th>
-      <th>ФИО сотрудника</th>
-      <th>Дней в приюте</th>
-      <th>Номер вольера</th>
-      <!--      <th>Дата выбытия животного из приюта</th>-->
-      <!--      <th>Причина выбытия (передача владельцу, смерть или иное, написать)</th>-->
-      <!--      <th>Основание для выбытия животного из приюта (название, номер и дата документа)</th>-->
+<nz-page-header>
+  <nz-breadcrumb nz-page-header-breadcrumb>
+    <nz-breadcrumb-item>
+      Главная
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+      Животные в приюте
+    </nz-breadcrumb-item>
+  </nz-breadcrumb>
+  <nz-page-header-title>Животные в приюте</nz-page-header-title>
+  <nz-page-header-extra>
+    <a nz-button routerLink="../new" nzType="primary">Добавить</a>
+  </nz-page-header-extra>
+  <nz-page-header-content>
+    <nz-card>
+      <nz-table #basicTable [nzData]="orders$ | async">
+        <thead>
+        <tr>
+          <th>№ карточки</th>
+          <th>Дата поступления</th>
+          <th>№ чипа</th>
+          <th>Вид животного</th>
+          <!--    <th>№</th>-->
+          <!--    <th>Округ</th>-->
+          <!--    <th>Дата приема</th>-->
+          <!--    &lt;!&ndash;    Заполняется в пункте стерилизации&ndash;&gt;-->
+          <!--    <th>Акт отлова</th>-->
+          <!--    <th>Район</th>-->
+          <!--    <th>Улица</th>-->
+          <!--    <th>Порода</th>-->
+          <!--    <th>Год и месяц рождения</th>-->
+          <!--    <th>Шерсть</th>-->
+          <!--    <th>Уши</th>-->
+          <!--    <th>Хвост</th>-->
+          <!--    <th>Размер, вес</th>-->
+          <!--    <th>Особые приметы</th>-->
+          <!--    <th>Наименование пункта стерилизации</th>-->
+          <!--    <th>Адрес пункта стерилизации</th>-->
+          <!--    <th>Дата поступления в пункт стерилизации</th>-->
+          <!--    <th>Идентификационная метка (способ и место нанесения)</th>-->
+          <!--    <th>Дата стерилизации</th>-->
+          <!--    <th>ФИО врача проводившего стерилизацию</th>-->
+          <!--    <th>Дата выписки животного из стерилизации</th>-->
+          <!--    <th>ФИО руководителя стерилизации</th>-->
+          <!--    &lt;!&ndash;    Заполняется в приюте&ndash;&gt;-->
+          <!--    <th>Наименование приюта</th>-->
+          <!--    <th>Адрес приюта</th>-->
+          <!--      <th>Основания для приема в приют</th>-->
+          <th>Кличка</th>
+          <th>Пол</th>
+          <th>Возраст</th>
+          <th>Состояние здоровья</th>
+          <th>Статус</th>
+          <th>ФИО сотрудника</th>
+          <th>Дней в приюте</th>
+          <th>Номер вольера</th>
+          <!--      <th>Дата выбытия животного из приюта</th>-->
+          <!--      <th>Причина выбытия (передача владельцу, смерть или иное, написать)</th>-->
+          <!--      <th>Основание для выбытия животного из приюта (название, номер и дата документа)</th>-->
 
-      <!--    <th>ФИО и подпись руководителя Управляющей организации приюта</th>-->
-      <!--    Заполняется в городской организации учета и регистрации животных-->
-      <!--    <th>Государственный регистрационный номер</th>-->
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let data of basicTable.data" [routerLink]="['../', data.id]">
-      <td>
-        <a [routerLink]="['../', data.id]">{{data.id}}</a>
-      </td>
-      <td>{{data.shelterArrivalDate | date: 'dd.MM.yyyy'}}</td>
-      <td></td>
-      <td>{{data.category}}</td>
-      <td>{{data.name}}</td>
-      <td>{{data.sex ? 'Мальчик' : 'Девочка'}}</td>
-      <td>{{data.birthDate | date: 'dd.MM.yyyy'}}</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    </tbody>
-  </nz-table>
-  <!--  <nz-table #basicTable [nzData]="orders$ | async">-->
-  <!--    <thead>-->
-  <!--    <tr>-->
-  <!--      <th>Дата поступления животного в приют</th>-->
-  <!--      <th>№ карточки учета животного</th>-->
-  <!--      <th>Пол</th>-->
-  <!--      <th>Кличка</th>-->
-  <!--      <th>Окрас</th>-->
-  <!--      <th>Возраст</th>-->
-  <!--    </tr>-->
-  <!--    </thead>-->
-  <!--    <tbody>-->
-  <!--    <tr *ngFor="let data of basicTable.data" [routerLink]="['/animals', data.id]">-->
-  <!--      <td>{{data.shelterArrivalDate | date: 'dd.MM.yyyy'}}</td>-->
-  <!--      <td>-->
-  <!--        <a [routerLink]="['/animals', data.id]">{{data.id}}</a>-->
-  <!--      </td>-->
-  <!--      <td>{{data.sex ? 'Мальчик' : 'Девочка'}}</td>-->
-  <!--      <td>{{data.name}}</td>-->
-  <!--      <td>{{data.color}}</td>-->
-  <!--      <td>{{data.birthDate | date: 'dd.MM.yyyy'}} {{data.birthMonth | date: 'dd.MM.yyyy'}}</td>-->
-  <!--    </tr>-->
-  <!--    </tbody>-->
-  <!--  </nz-table>-->
-</nz-card>
+          <!--    <th>ФИО и подпись руководителя Управляющей организации приюта</th>-->
+          <!--    Заполняется в городской организации учета и регистрации животных-->
+          <!--    <th>Государственный регистрационный номер</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of basicTable.data" [routerLink]="['../', data.id]">
+          <td>
+            <a [routerLink]="['../', data.id]">{{data.id}}</a>
+          </td>
+          <td>{{data.shelterArrivalDate | date: 'dd.MM.yyyy'}}</td>
+          <td></td>
+          <td>{{data.category}}</td>
+          <td>{{data.name}}</td>
+          <td>{{data.sex ? 'Мальчик' : 'Девочка'}}</td>
+          <td>{{data.birthDate | date: 'dd.MM.yyyy'}}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        </tbody>
+      </nz-table>
+      <!--  <nz-table #basicTable [nzData]="orders$ | async">-->
+      <!--    <thead>-->
+      <!--    <tr>-->
+      <!--      <th>Дата поступления животного в приют</th>-->
+      <!--      <th>№ карточки учета животного</th>-->
+      <!--      <th>Пол</th>-->
+      <!--      <th>Кличка</th>-->
+      <!--      <th>Окрас</th>-->
+      <!--      <th>Возраст</th>-->
+      <!--    </tr>-->
+      <!--    </thead>-->
+      <!--    <tbody>-->
+      <!--    <tr *ngFor="let data of basicTable.data" [routerLink]="['/animals', data.id]">-->
+      <!--      <td>{{data.shelterArrivalDate | date: 'dd.MM.yyyy'}}</td>-->
+      <!--      <td>-->
+      <!--        <a [routerLink]="['/animals', data.id]">{{data.id}}</a>-->
+      <!--      </td>-->
+      <!--      <td>{{data.sex ? 'Мальчик' : 'Девочка'}}</td>-->
+      <!--      <td>{{data.name}}</td>-->
+      <!--      <td>{{data.color}}</td>-->
+      <!--      <td>{{data.birthDate | date: 'dd.MM.yyyy'}} {{data.birthMonth | date: 'dd.MM.yyyy'}}</td>-->
+      <!--    </tr>-->
+      <!--    </tbody>-->
+      <!--  </nz-table>-->
+    </nz-card>
+  </nz-page-header-content>
+</nz-page-header>

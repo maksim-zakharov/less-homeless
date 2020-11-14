@@ -1,11 +1,23 @@
-import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put, UploadedFile, UseInterceptors } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpException,
+  HttpStatus,
+  Param,
+  Post,
+  Put, Request,
+  UploadedFile,
+  UseGuards,
+  UseInterceptors
+} from '@nestjs/common';
 import { AnimalsService } from './animals.service';
 import { Animal, NewAnimal, UpdatedAnimal } from './animal';
 import { YandexS3Service } from '../core/yandex-s3/yandex-s3.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { CatBreed } from '../entities/cat-breed.entity';
 import { PetGender } from '../entities/pet-gender.entity';
-import { Connection } from 'typeorm';
 import { CatColor } from '../entities/cat-color.entity';
 import { CatFur } from '../entities/cat-fur.entity';
 import { DogBreed } from '../entities/dog-breed.entity';
@@ -21,12 +33,17 @@ import { ReasonForLeaving } from '../entities/reason-for-leaving.entity';
 import { Euthanasia } from '../entities/euthanasia.entity';
 import { District } from '../entities/district.entity';
 import { ApiExcludeEndpoint, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { CrudService } from '../core/crud/crud.service';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { User } from '../users/user.entity';
 
 @ApiTags('animals')
 @Controller('animals')
 export class AnimalsController {
 
-  constructor(private connection: Connection, private s3: YandexS3Service, private animalsService: AnimalsService) {
+  constructor(private s3: YandexS3Service,
+              private crudService: CrudService,
+              private animalsService: AnimalsService) {
   }
 
   @ApiResponse({
@@ -38,18 +55,19 @@ export class AnimalsController {
   })
   @ApiOperation({description: 'Возвращает массив животных'})
   @Get()
-  getAll(): Promise<Animal[]> {
-    return this.animalsService.getAll();
+  @UseGuards(JwtAuthGuard)
+  getAll(@Request() req): Promise<Animal[]> {
+    return this.animalsService.getAll({shelterId: req.user.shelter?.id});
   }
 
   @ApiResponse({
     status: 200,
     type: ReasonForLeaving
   })
-  @ApiOperation({description: 'Возвращает массив причин выбытия',})
+  @ApiOperation({description: 'Возвращает массив причин выбытия'})
   @Get('leaving-reason')
   getLeavingReason(): Promise<ReasonForLeaving[]> {
-    return this.connection.getRepository(ReasonForLeaving).find();
+    return this.crudService.get(ReasonForLeaving);
   }
 
   @ApiResponse({
@@ -61,7 +79,7 @@ export class AnimalsController {
   })
   @Get('euthanasia-reason')
   getEuthanasiaReasons(): Promise<Euthanasia[]> {
-    return this.connection.getRepository(Euthanasia).find();
+    return this.crudService.get(Euthanasia);
   }
 
   @ApiResponse({
@@ -73,7 +91,7 @@ export class AnimalsController {
   })
   @Get('cause-death')
   getCauseDeath(): Promise<DeathCause[]> {
-    return this.connection.getRepository(DeathCause).find();
+    return this.crudService.get(DeathCause);
   }
 
   @ApiResponse({
@@ -85,7 +103,7 @@ export class AnimalsController {
   })
   @Get('shelters')
   getShelters(): Promise<Shelter[]> {
-    return this.connection.getRepository(Shelter).find();
+    return this.crudService.get(Shelter);
   }
 
   @ApiResponse({
@@ -97,7 +115,7 @@ export class AnimalsController {
   })
   @Get('tail-types')
   getTailTypes(): Promise<TailType[]> {
-    return this.connection.getRepository(TailType).find();
+    return this.crudService.get(TailType);
   }
 
   @ApiResponse({
@@ -109,7 +127,7 @@ export class AnimalsController {
   })
   @Get('pet-types')
   getPetTypes(): Promise<PetType[]> {
-    return this.connection.getRepository(PetType).find();
+    return this.crudService.get(PetType);
   }
 
   @ApiResponse({
@@ -121,7 +139,7 @@ export class AnimalsController {
   })
   @Get('pet-sizes')
   getPetSizes(): Promise<PetSize[]> {
-    return this.connection.getRepository(PetSize).find();
+    return this.crudService.get(PetSize);
   }
 
   @ApiResponse({
@@ -133,12 +151,12 @@ export class AnimalsController {
   })
   @Get('ear-types')
   getEarTypes(): Promise<EarType[]> {
-    return this.connection.getRepository(EarType).find();
+    return this.crudService.get(EarType);
   }
 
   @Get('dog-furs')
   getDogFurs(): Promise<DogFur[]> {
-    return this.connection.getRepository(DogFur).find();
+    return this.crudService.get(DogFur);
   }
 
   @ApiResponse({
@@ -150,12 +168,12 @@ export class AnimalsController {
   })
   @Get('cat-furs')
   getCatFurs(): Promise<CatFur[]> {
-    return this.connection.getRepository(CatFur).find();
+    return this.crudService.get(CatFur);
   }
 
   @Get('dog-colors')
   getDogColors(): Promise<DogColor[]> {
-    return this.connection.getRepository(DogColor).find();
+    return this.crudService.get(DogColor);
   }
 
   @ApiResponse({
@@ -167,7 +185,7 @@ export class AnimalsController {
   })
   @Get('cat-colors')
   getCatColors(): Promise<CatColor[]> {
-    return this.connection.getRepository(CatColor).find();
+    return this.crudService.get(CatColor);
   }
 
   @ApiResponse({
@@ -179,7 +197,7 @@ export class AnimalsController {
   })
   @Get('pet-genders')
   getPetGenders(): Promise<PetGender[]> {
-    return this.connection.getRepository(PetGender).find();
+    return this.crudService.get(PetGender);
   }
 
   @ApiResponse({
@@ -191,12 +209,12 @@ export class AnimalsController {
   })
   @Get('districts')
   getDistricts(): Promise<District[]> {
-    return this.connection.getRepository(District).find();
+    return this.crudService.get(District);
   }
 
   @Get('dog-breeds')
   getDogBreeds(): Promise<DogBreed[]> {
-    return this.connection.getRepository(DogBreed).find();
+    return this.crudService.get(DogBreed);
   }
 
   @ApiResponse({
@@ -208,7 +226,7 @@ export class AnimalsController {
   })
   @Get('cat-breeds')
   getCatBreeds(): Promise<CatBreed[]> {
-    return this.connection.getRepository(CatBreed).find();
+    return this.crudService.get(CatBreed);
   }
 
   @ApiResponse({
@@ -232,7 +250,10 @@ export class AnimalsController {
 
   @ApiExcludeEndpoint()
   @Post()
-  create(@Body() newAnimal: NewAnimal): Promise<Animal> {
+  @UseGuards(JwtAuthGuard)
+  create(@Request() req: {user: User}, @Body() newAnimal: NewAnimal): Promise<Animal> {
+    newAnimal.shelter = req.user.shelter;
+
     return this.animalsService.create(newAnimal);
   }
 

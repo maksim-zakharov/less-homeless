@@ -2,6 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Connection, Repository } from 'typeorm';
 import { Animal, NewAnimal, UpdatedAnimal } from './animal';
+import { Shelter } from '../entities/shelter.entity';
 
 @Injectable()
 export class AnimalsService {
@@ -11,8 +12,11 @@ export class AnimalsService {
               private readonly animalsRepository: Repository<Animal>) {
   }
 
-  getAll(): Promise<Animal[]> {
-    return this.animalsRepository.find();
+  getAll(options?: { shelterId: number | string }): Promise<Animal[]> {
+    // if (options?.shelterId) {
+    //   return this.connection.getRepository(Shelter).findOne({id: options?.shelterId}).then(shelter => shelter.);
+    // }
+    return this.animalsRepository.find({where: {shelter: {id: options?.shelterId}}, relations: ['shelter']});
   }
 
   getById(id: number): Promise<Animal> {
@@ -21,7 +25,7 @@ export class AnimalsService {
     });
   }
 
-  async create(newAnimal: NewAnimal): Promise<Animal> {
+  create(newAnimal: NewAnimal): Promise<Animal> {
     const animal = this.animalsRepository.create(newAnimal);
     return this.animalsRepository.save(animal);
   }

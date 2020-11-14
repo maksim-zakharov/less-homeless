@@ -48,8 +48,8 @@ export class AuthService {
     );
   }
 
-  registerShelter(firstName: string, lastName: string, login: string, password: string, shelterName: string, shelterAddress: string): Observable<any> {
-    return this.http.post('/api/auth/register-shelter', {email: login, name: `${firstName} ${lastName}`, password, shelterName, shelterAddress}).pipe(
+  registerShelter(firstName: string, lastName: string, login: string, password: string, shelterName: string, shelterAddress: any): Observable<any> {
+    return this.http.post('/api/auth/register-shelter', {email: login, name: `${firstName} ${lastName}`, password, shelter: {name: shelterName, ...shelterAddress}}).pipe(
       flatMap(user => this.updateSession(user)),
       flatMap(() => this.redirectIfNeed())
     );

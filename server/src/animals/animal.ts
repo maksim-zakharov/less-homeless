@@ -18,6 +18,7 @@ import { Euthanasia } from '../entities/euthanasia.entity';
 import { DisposalInfo } from '../entities/disposal-info.entity';
 import { ArrivalInfo } from '../entities/arrival-info.entity';
 import { ApiProperty } from '@nestjs/swagger';
+import { Shelter } from '../entities/shelter.entity';
 
 export class NewAnimal {
 
@@ -142,10 +143,14 @@ export class NewAnimal {
   @JoinColumn({name: 'parasiteTreatmentId'})
   parasiteTreatment?: ParasiteTreatment;
 
-  @ApiProperty({description: 'Информация о прибытии'})
-  @OneToOne(() => ArrivalInfo, {nullable: true, cascade: true})
-  @JoinColumn({name: 'arrivalInfoId'})
-  arrivalInfo?: ArrivalInfo;
+  // @ApiProperty({description: 'Информация о прибытии'})
+  // @OneToOne(() => ArrivalInfo, {nullable: true, cascade: true})
+  // @JoinColumn({name: 'arrivalInfoId'})
+  // arrivalInfo?: ArrivalInfo;
+
+  @ApiProperty({description: 'Приют'})
+  @ManyToOne(() => Shelter, shelter => shelter.animals)
+  shelter: Shelter;
 
   @ApiProperty({description: 'Инфморация об отлове'})
   @OneToOne(() => CaptureInfo, {nullable: true, cascade: true})

@@ -1,6 +1,6 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map} from 'rxjs/operators';
 
 @Injectable()
 export class YandexMapsApiService {
@@ -17,7 +17,7 @@ export class YandexMapsApiService {
       //   city: c.find(i => i.kind === 'locality')?.name,
       //   house: c.find(i => i.kind === 'house')?.name
       // })))
-    );
+          );
   }
 
   searchCity(query: string, results: number = 10): Observable<any> {
@@ -40,8 +40,10 @@ export class YandexMapsApiService {
       map(response => response.data),
       map(response =>
         response.response.GeoObjectCollection.featureMember.map(m => ({
-          fullAddress: m.GeoObject.metaDataProperty.GeocoderMetaData.text,
-          components: m.GeoObject.metaDataProperty.GeocoderMetaData.Address.Components
+          address: m.GeoObject.metaDataProperty.GeocoderMetaData.text,
+          components: m.GeoObject.metaDataProperty.GeocoderMetaData.Address.Components,
+          longitude: +m.GeoObject.Point.pos.split(' ')[0],
+          latitude: +m.GeoObject.Point.pos.split(' ')[1]
         })))
     );
   }

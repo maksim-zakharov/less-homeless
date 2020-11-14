@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './auth.service';
-import { YandexMapsApiService } from '../core/yandex-maps-api.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +11,7 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private yandexMapsApiService: YandexMapsApiService, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -29,7 +28,5 @@ export class LoginComponent implements OnInit {
     }
 
     this.authService.login(this.form.value.login, this.form.value.password).subscribe();
-
-    this.yandexMapsApiService.searchCity('Тула').subscribe();
   }
 }

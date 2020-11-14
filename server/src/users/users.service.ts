@@ -19,7 +19,7 @@ export class UsersService {
   }
 
   async getByEmail(email: string): Promise<User> {
-    const user = await this.usersRepository.findOne({ email });
+    const user = await this.usersRepository.findOne({ email }, {relations: ['shelter']});
     if (user) {
       return user;
     }

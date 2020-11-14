@@ -9,7 +9,7 @@ import {
   NzDescriptionsModule,
   NzDividerModule,
   NzFormModule, NzIconModule,
-  NzInputModule, NzMessageModule, NzModalModule, NzRadioModule, NzSelectModule,
+  NzInputModule, NzMessageModule, NzModalModule, NzPageHeaderModule, NzRadioModule, NzSelectModule,
   NzTableModule, NzTabsModule, NzToolTipModule, NzUploadModule
 } from 'ng-zorro-antd';
 import { AnimalsDetailsComponent } from './animals-details/animals-details.component';
@@ -55,7 +55,7 @@ import { AnimalArrivalComponent } from './animal-arrival/animal-arrival.componen
     NzIconModule,
     NzDatePickerModule,
     NzCardModule,
-    NzUploadModule, NzRadioModule, NzTabsModule, FormsModule
+    NzUploadModule, NzRadioModule, NzTabsModule, FormsModule, NzPageHeaderModule
   ]
 })
 export class AnimalsModule {
