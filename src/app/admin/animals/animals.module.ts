@@ -22,6 +22,7 @@ import { AnimalVaccinationComponent } from './animal-vaccination/animal-vaccinat
 import { AnimalEuthanasiaComponent } from './animal-euthanasia/animal-euthanasia.component';
 import { AnimalCaptureComponent } from './animal-capture/animal-capture.component';
 import { AnimalArrivalComponent } from './animal-arrival/animal-arrival.component';
+import { CoreModule } from '../../core/core.module';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,7 @@ import { AnimalArrivalComponent } from './animal-arrival/animal-arrival.componen
     NzIconModule,
     NzDatePickerModule,
     NzCardModule,
-    NzUploadModule, NzRadioModule, NzTabsModule, FormsModule, NzPageHeaderModule
+    NzUploadModule, NzRadioModule, NzTabsModule, FormsModule, NzPageHeaderModule, CoreModule
   ]
 })
 export class AnimalsModule {

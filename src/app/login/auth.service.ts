@@ -49,7 +49,12 @@ export class AuthService {
   }
 
   registerShelter(firstName: string, lastName: string, login: string, password: string, shelterName: string, shelterAddress: any): Observable<any> {
-    return this.http.post('/api/auth/register-shelter', {email: login, name: `${firstName} ${lastName}`, password, shelter: {name: shelterName, ...shelterAddress}}).pipe(
+    return this.http.post('/api/auth/register-shelter', {
+      email: login,
+      name: `${firstName} ${lastName}`,
+      password,
+      shelter: {name: shelterName, ...shelterAddress}
+    }).pipe(
       flatMap(user => this.updateSession(user)),
       flatMap(() => this.redirectIfNeed())
     );
@@ -85,22 +90,31 @@ export class AuthService {
     return this.updateSession().pipe(catchError(err => of(err)));
   }
 
-  public logout(currentUrl?: string): Promise<boolean> {
+  public logout(options?: { currentUrl?: string, withoutRedirect?: boolean }): Promise<boolean> {
     this._userSubject.next({});
+    localStorage.removeItem('accessToken');
+
+    if (!options) {
+      return;
+    }
+
+    if (options.withoutRedirect) {
+      return;
+    }
 
     // Урл на котором находимся сейчас
-    if (!currentUrl) {
-      currentUrl = this.router.url;
+    if (!options.currentUrl) {
+      options.currentUrl = this.router.url;
     }
 
     // Если мы уже находимся на странице логина, никуда не редиректим
-    if (currentUrl.slice(0, 6) === '/login') {
+    if (options.currentUrl.slice(0, 6) === '/login') {
       return;
     }
 
     // Если мы не в руте, сохраняем редирект на текущую страницу.
-    if (currentUrl && currentUrl !== '/') {
-      return this.router.navigate(['/', 'login'], {queryParams: {redirectUrl: currentUrl}});
+    if (options.currentUrl && options.currentUrl !== '/') {
+      return this.router.navigate(['/', 'login'], {queryParams: {redirectUrl: options.currentUrl}});
     } else {
       // Если мы в руте, сохраняем редирект на рут.
       return this.router.navigate(['/', 'login']);

@@ -8,25 +8,27 @@ const routes: Routes = [
     path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
   },
   {
-    path: 'register', loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
+    path: 'registration', loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
   },
   {
-    path: 'register-shelter', loadChildren: () => import('./register-shelter/register-shelter.module').then(m => m.RegisterShelterModule)
+    path: 'registration-shelter',
+    loadChildren: () => import('./register-shelter/register-shelter.module').then(m => m.RegisterShelterModule)
   },
   {
     path: '',
     component: LayoutComponent,
-    canActivate: [InitializationGuard],
-
     children: [
       {
-        path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+        path: 'admin', canActivate: [InitializationGuard], loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
       },
       {
-        path: 'market', loadChildren: () => import('./market/market.module').then(m => m.MarketModule)
+        path: '',
+        canActivate: [InitializationGuard],
+        data: {noRedirect: true},
+        loadChildren: () => import('./market/market.module').then(m => m.MarketModule)
       },
       {
-        path: '**', redirectTo: 'admin'
+        path: '**', redirectTo: ''
       }
     ]
   }

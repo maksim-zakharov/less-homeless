@@ -96,7 +96,7 @@ export class AuthInterceptor implements HttpInterceptor {
         tap((token) => {
             // Если токена не дали или ошибка
             if (!token || token.error) {
-              this.authService.logout();
+              this.authService.logout({});
             }
             this.isRefreshingToken = false;
             this.tokenRefreshedSource.next();
@@ -126,7 +126,7 @@ export class AuthInterceptor implements HttpInterceptor {
   private logoutAndThrowError(error): Observable<never> {
     this.tokenRefreshedSource.unsubscribe();
     this.isRefreshingToken = false;
-    this.authService.logout();
+    this.authService.logout({});
     return throwError(error);
   }
 }

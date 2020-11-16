@@ -11,7 +11,8 @@ import { isPlatformBrowser } from '@angular/common';
 @Injectable()
 export class InitializationGuard implements CanActivate {
   constructor(
-    @Inject(PLATFORM_ID) private _platformId: Object, public _authService: AuthService) {}
+    @Inject(PLATFORM_ID) private _platformId: Object, public _authService: AuthService) {
+  }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (this._authService.user.id || !isPlatformBrowser(this._platformId)) {
@@ -25,7 +26,10 @@ export class InitializationGuard implements CanActivate {
         .toPromise()
         .then(() => true);
     }
-    this._authService.logout(state.url);
+
+    if (!next.data.noRedirect) {
+      this._authService.logout({currentUrl: state.url});
+    }
     return false;
   }
 }
