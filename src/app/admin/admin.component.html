@@ -50,11 +50,16 @@
     <nz-header>
       <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
          (click)="isCollapsed = !isCollapsed"></i>
-      <div class="avatar-wrapper" *ngIf="this.authService.user">
-        <nz-avatar nzIcon="user"></nz-avatar>
+      <div class="avatar-wrapper" *ngIf="this.authService.user" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
         <span>{{authService.user.name}}</span>
         <span>{{authService.user.shelter?.name}}</span>
+        <nz-avatar nzIcon="user"></nz-avatar>
       </div>
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu>
+          <li nz-menu-item (click)="logout()">Выйти</li>
+        </ul>
+      </nz-dropdown-menu>
     </nz-header>
     <nz-content>
       <div class="inner-content">

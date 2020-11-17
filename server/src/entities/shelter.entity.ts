@@ -24,6 +24,9 @@ export class Shelter {
   @Column({nullable: true, type: 'float'})
   public latitude: number;
 
+  @Column({nullable: true})
+  public city: string;
+
   @ApiProperty({description: 'Телефон приюта'})
   @Column()
   public phone: string;

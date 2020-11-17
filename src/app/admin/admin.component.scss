@@ -86,7 +86,7 @@ nz-content {
 }
 
 .inner-content {
-  padding: 14px 30px 30px;
+  //padding: 14px 30px 30px;
   background: #f3f5f7;
   height: 100%;
 }
@@ -96,7 +96,7 @@ nz-content {
   align-items: center;
 
   nz-avatar {
-    margin-right: 10px;
+    margin-left: 10px;
   }
 }
 
@@ -105,7 +105,7 @@ nz-header.ant-layout-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 30px;
+  padding: 24px;
 }
 
 h1 {

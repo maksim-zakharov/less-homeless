@@ -583,7 +583,7 @@ label:not([class]) {
   width: 68px;
   height: 68px;
   position: absolute;
-  background: url("./donate-icon.svg") no-repeat bottom center;
+  background: url("../donate-icon.svg") no-repeat bottom center;
   background-size: 100% auto;
   transition: all .3s ease-in
 }
@@ -4214,7 +4214,7 @@ label:not([class]) {
   height: 124px;
   left: 0;
   right: 0;
-  background: url("./footer-bg.svg") no-repeat bottom center;
+  background: url("../footer-bg.svg") no-repeat bottom center;
   background-size: 1920px 124px;
   position: absolute;
   bottom: 32px
@@ -4226,7 +4226,7 @@ label:not([class]) {
   height: 140px;
   left: 0;
   right: 0;
-  background: url("./footer-bg-2.svg") no-repeat bottom center;
+  background: url("../footer-bg-2.svg") no-repeat bottom center;
   background-size: 1920px 140px;
   position: absolute;
   bottom: 0

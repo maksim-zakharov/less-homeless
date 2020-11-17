@@ -18,6 +18,7 @@ import { CoreModule } from './core/core.module';
 import { LayoutComponent } from './layout/layout.component';
 import { AuthInterceptor } from './login/auth.interceptor';
 import { InitializationGuard } from './login/initialization.guard';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 registerLocaleData(ru);
@@ -37,7 +38,8 @@ registerLocaleData(ru);
     NzMenuModule,
     FormsModule,
     BrowserAnimationsModule,
-    CoreModule
+    CoreModule,
+    FontAwesomeModule
   ],
   providers: [
     {

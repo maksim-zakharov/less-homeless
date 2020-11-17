@@ -28,7 +28,7 @@ export class InitializationGuard implements CanActivate {
     }
 
     if (!next.data.noRedirect) {
-      this._authService.logout({currentUrl: state.url});
+      this._authService.logout({});
     }
     return false;
   }

@@ -1,5 +1,4 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { ApiProperty } from '@nestjs/swagger';
 import { Shelter } from '../entities/shelter.entity';
 
 @Entity()
@@ -16,7 +15,9 @@ export class User {
   @Column()
   public password: string;
 
-  @ApiProperty({description: 'Наименование приюта'})
   @ManyToOne(() => Shelter)
   shelter?: Shelter;
+
+  @Column({nullable: true})
+  public city: string;
 }
