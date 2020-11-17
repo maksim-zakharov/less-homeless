@@ -2,8 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PermissionsComponent } from './permissions.component';
 import { RouterModule, Routes } from '@angular/router';
-import { NzBreadCrumbModule, NzButtonModule, NzCardModule, NzSwitchModule, NzTransferModule } from 'ng-zorro-antd';
 import { FormsModule } from '@angular/forms';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzTransferModule } from 'ng-zorro-antd/transfer';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 const routes: Routes = [
   {path: '', component: PermissionsComponent},

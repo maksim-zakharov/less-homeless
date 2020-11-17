@@ -1,9 +1,9 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AuthService } from '../login/auth.service';
-import { NzModalService } from 'ng-zorro-antd';
 import { debounceTime, filter, map, startWith, switchMap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 import { YandexMapsApiService } from '../core/yandex-maps-api.service';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-market',

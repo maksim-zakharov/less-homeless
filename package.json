@@ -60,7 +60,7 @@
     "fastify-swagger": "^3.4.0",
     "helmet": "^4.1.1",
     "jwt-decode": "^3.0.0",
-    "ng-zorro-antd": "^9.3.0",
+    "ng-zorro-antd": "^10.1.2",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",

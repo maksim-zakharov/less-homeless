@@ -2,9 +2,9 @@ import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { AnimalsService } from '../animals.service';
 import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
-import { NzModalRef, NzModalService } from 'ng-zorro-antd';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-animals-aviaries',

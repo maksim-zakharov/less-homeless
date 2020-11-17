@@ -17,8 +17,9 @@ import {
 } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NzMessageService, NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd';
 import { AnimalModel } from '../animal.model';
+import { NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd/upload';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-animals-edit',

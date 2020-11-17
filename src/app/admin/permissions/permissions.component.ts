@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TransferItem } from 'ng-zorro-antd';
+import { TransferItem } from 'ng-zorro-antd/transfer';
 
 @Component({
   selector: 'app-permissions',

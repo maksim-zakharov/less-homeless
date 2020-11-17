@@ -3,15 +3,6 @@ import { CommonModule } from '@angular/common';
 import { AnimalsListComponent } from './animals-list/animals-list.component';
 import { AnimalsRoutingModule } from './animals-routing.module';
 import { AnimalsService } from './animals.service';
-import {
-  NzBreadCrumbModule,
-  NzButtonModule, NzCardModule, NzCheckboxModule, NzDatePickerModule,
-  NzDescriptionsModule,
-  NzDividerModule,
-  NzFormModule, NzIconModule,
-  NzInputModule, NzMessageModule, NzModalModule, NzPageHeaderModule, NzRadioModule, NzSelectModule,
-  NzTableModule, NzTabsModule, NzToolTipModule, NzUploadModule
-} from 'ng-zorro-antd';
 import { AnimalsDetailsComponent } from './animals-details/animals-details.component';
 import { AnimalsEditComponent } from './animals-edit/animals-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,6 +14,26 @@ import { AnimalEuthanasiaComponent } from './animal-euthanasia/animal-euthanasia
 import { AnimalCaptureComponent } from './animal-capture/animal-capture.component';
 import { AnimalArrivalComponent } from './animal-arrival/animal-arrival.component';
 import { CoreModule } from '../../core/core.module';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 
 @NgModule({
   declarations: [
@@ -56,7 +67,7 @@ import { CoreModule } from '../../core/core.module';
     NzIconModule,
     NzDatePickerModule,
     NzCardModule,
-    NzUploadModule, NzRadioModule, NzTabsModule, FormsModule, NzPageHeaderModule, CoreModule
+    NzUploadModule, NzRadioModule, NzTabsModule, FormsModule, NzPageHeaderModule, CoreModule, NzGridModule, NzCardModule, NzTabsModule, NzDividerModule, NzDescriptionsModule, NzBreadCrumbModule, NzUploadModule
   ]
 })
 export class AnimalsModule {

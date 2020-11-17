@@ -4,7 +4,7 @@ import { ServerModule, ServerTransferStateModule } from '@angular/platform-serve
 
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
-import { NZ_I18N, NzI18nModule, ru_RU } from 'ng-zorro-antd';
+import { NZ_I18N, NzI18nModule, ru_RU } from 'ng-zorro-antd/i18n';
 
 @NgModule({
   imports: [

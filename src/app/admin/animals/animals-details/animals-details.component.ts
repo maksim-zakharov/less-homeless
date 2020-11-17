@@ -3,7 +3,8 @@ import { AnimalsService } from '../animals.service';
 import { Observable } from 'rxjs';
 import { pluck, share, shareReplay, switchMap, tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-import { NzMessageService, NzUploadChangeParam } from 'ng-zorro-antd';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 
 @Component({
   selector: 'app-animals-details',

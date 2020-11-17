@@ -3,7 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RegisterShelterComponent } from './register-shelter.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NzAutocompleteModule, NzButtonModule, NzCardModule, NzDividerModule, NzFormModule, NzInputModule } from 'ng-zorro-antd';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
+import { NzInputModule } from 'ng-zorro-antd/input';
 
 const routes: Routes = [
   {
