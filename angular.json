@@ -32,7 +32,6 @@
                 "output": "/assets/"
               }
             ],
-            "extractCss": true,
             "styles": [
               "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/styles.scss"
@@ -50,7 +49,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -153,8 +151,8 @@
         "serve-ssr": {
           "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
-            "browserTarget": "universal-starter-v9:build",
-            "serverTarget": "universal-starter-v9:server"
+            "browserTarget": "less-homeless:build",
+            "serverTarget": "less-homeless:server"
           },
           "configurations": {
             "production": {

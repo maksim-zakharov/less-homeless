@@ -7,15 +7,17 @@ import { CoreModule } from './src/core/core.module';
 import { AuthModule } from './src/auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { YandexMapsApiModule } from './src/yandex-maps-api/yandex-maps-api.module';
+import { AppServerModule } from '../src/main.server';
 
 @Module({
   imports: [
     ConfigModule.forRoot(), // load .env file
     CoreModule,
     AngularUniversalModule.forRoot({
+      bootstrap: AppServerModule,
       viewsPath: join(process.cwd(), 'dist/browser'),
-      bundle: require('../server/main'),
-      liveReload: false,
+      // bundle: require('../server/main'),
+      // liveReload: false,
       cache: true
     }),
     TypeOrmModule.forRoot({
